@@ -27,9 +27,9 @@
     },
     {
       "id": "feature3",
-      "description": "A winding path leading up a mountain, representing a career journey.",
-      "imageUrl": "https://picsum.photos/seed/feature3/600/400",
-      "imageHint": "path mountain"
+      "description": "Two characters adjusting a career plan on a large tablet, symbolizing a dynamic roadmap.",
+      "imageUrl": "https://storage.googleapis.com/project-avastar/9ab9957c-f236-402a-a92c-63b1e3e7f185.png",
+      "imageHint": "career planning"
     },
     {
       "id": "copilot",
