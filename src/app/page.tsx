@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote, PlayCircle, Users, BookOpen } from 'lucide-react';
+import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote, PlayCircle, Users, BookOpen, Twitter, Linkedin, Facebook } from 'lucide-react';
 import Logo from '@/components/logo';
 import { UserNav } from '@/components/user-nav';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -223,7 +223,7 @@ export default function Home() {
                       </div>
                       <p className="text-muted-foreground text-lg">{feature.description}</p>
                     </div>
-                    <div className="relative min-h-[300px] rounded-lg overflow-hidden shadow-xl">
+                    <div className="relative min-h-[300px] rounded-lg overflow-hidden shadow-xl transform hover:-translate-y-2 transition-transform duration-300">
                       {image && (
                         <Image src={image.imageUrl} alt={feature.title} fill className="object-cover" data-ai-hint={image.imageHint} />
                       )}
@@ -338,7 +338,7 @@ export default function Home() {
                 <Link href="/dashboard">Explore Your Dashboard <ArrowRight className="ml-2" /></Link>
               </Button>
             </div>
-            <div className="relative aspect-square rounded-xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-square rounded-xl overflow-hidden shadow-2xl transform hover:-translate-y-2 transition-transform duration-300">
               {copilotImage && (
                 <Image src={copilotImage.imageUrl} alt="Career Co-Pilot" fill className="object-cover" data-ai-hint={copilotImage.imageHint} />
               )}
@@ -457,8 +457,8 @@ export default function Home() {
                                         )}
                                     </div>
                                     <CardHeader>
-                                        <p className="text-sm text-primary font-semibold bg-primary/10 rounded-full px-3 py-1 self-start">{post.category}</p>
-                                        <CardTitle className="font-headline text-xl leading-tight group-hover:text-primary transition-colors">{post.title}</CardTitle>
+                                        <p className="text-sm text-primary font-semibold bg-primary/10 rounded-full px-3 py-1 self-start w-fit">{post.category}</p>
+                                        <CardTitle className="font-headline text-xl leading-tight group-hover:text-primary transition-colors mt-2">{post.title}</CardTitle>
                                     </CardHeader>
                                 </Link>
                             </Card>
@@ -466,8 +466,10 @@ export default function Home() {
                     })}
                 </div>
                 <div className="text-center mt-12">
-                    <Button variant="outline">
-                        Read More on Our Blog <ArrowRight className="ml-2" />
+                    <Button variant="outline" asChild>
+                        <Link href="#">
+                            Read More on Our Blog <ArrowRight className="ml-2" />
+                        </Link>
                     </Button>
                 </div>
             </div>
@@ -518,12 +520,51 @@ export default function Home() {
 
       </main>
       <footer className="border-t bg-card">
-        <div className="container py-6 text-center text-muted-foreground text-sm">
-          <p>&copy; {new Date().getFullYear()} IKI-G-AI. All rights reserved.</p>
+        <div className="container py-12">
+          <div className="grid gap-8 md:grid-cols-12">
+            <div className="md:col-span-4 lg:col-span-5">
+              <Logo />
+              <p className="text-muted-foreground mt-4 text-sm">
+                Your AI-powered guide to a fulfilling career and a purpose-driven life.
+              </p>
+              <div className="flex space-x-4 mt-6">
+                  <Link href="#" className="text-muted-foreground hover:text-foreground"><Twitter className="h-5 w-5" /></Link>
+                  <Link href="#" className="text-muted-foreground hover:text-foreground"><Facebook className="h-5 w-5" /></Link>
+                  <Link href="#" className="text-muted-foreground hover:text-foreground"><Linkedin className="h-5 w-5" /></Link>
+              </div>
+            </div>
+            <div className="md:col-span-8 lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 className="font-semibold text-foreground">Navigate</h3>
+                    <ul className="mt-4 space-y-2 text-sm">
+                        <li><Link href="#features" className="text-muted-foreground hover:text-foreground">Features</Link></li>
+                        <li><Link href="#how-it-works" className="text-muted-foreground hover:text-foreground">How It Works</Link></li>
+                        <li><Link href="#testimonials" className="text-muted-foreground hover:text-foreground">Testimonials</Link></li>
+                        <li><Link href="#faq" className="text-muted-foreground hover:text-foreground">FAQs</Link></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-semibold text-foreground">Resources</h3>
+                    <ul className="mt-4 space-y-2 text-sm">
+                        <li><Link href="#blog" className="text-muted-foreground hover:text-foreground">Blog</Link></li>
+                        <li><Link href="#" className="text-muted-foreground hover:text-foreground">Case Studies</Link></li>
+                        <li><Link href="#" className="text-muted-foreground hover:text-foreground">About Us</Link></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 className="font-semibold text-foreground">Legal</h3>
+                    <ul className="mt-4 space-y-2 text-sm">
+                        <li><Link href="#" className="text-muted-foreground hover:text-foreground">Privacy Policy</Link></li>
+                        <li><Link href="#" className="text-muted-foreground hover:text-foreground">Terms of Service</Link></li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+          <div className="mt-12 border-t pt-6 text-center text-sm text-muted-foreground">
+            <p>&copy; {new Date().getFullYear()} IKI-G-AI. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>
   );
 }
-
-    
