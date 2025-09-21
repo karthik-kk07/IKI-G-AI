@@ -216,7 +216,7 @@ export default function Home() {
                 const image = PlaceHolderImages.find((p) => p.id === feature.imageId);
                 return (
                   <div key={feature.title} className="grid md:grid-cols-2 items-center gap-12">
-                    <div className={index % 2 === 0 ? "md:order-2" : ""}>
+                    <div className={index % 2 === 1 ? "md:order-2" : ""}>
                       <div className="flex items-center gap-4 mb-4">
                           {feature.icon}
                           <h3 className="font-headline text-2xl font-bold">{feature.title}</h3>
