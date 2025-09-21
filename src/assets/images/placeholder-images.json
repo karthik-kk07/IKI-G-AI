@@ -40,7 +40,7 @@
     {
       "id": "copilot",
       "description": "A person working on a laptop in a modern, bright environment, representing the career co-pilot feature.",
-      "imageUrl": "https://picsum.photos/seed/copilot/600/600",
+      "imageUrl": "https://storage.googleapis.com/project-avastar/7b7f14b3-34a4-4dd3-a634-5f11b333796f.png",
       "imageHint": "woman working laptop"
     },
     {
@@ -75,8 +75,8 @@
     },
     {
       "id": "career-preview",
-      "description": "A professional working in their new career.",
-      "imageUrl": "https://picsum.photos/seed/career-preview/600/400",
+      "description": "A professional working in their new career as a UI/UX Designer.",
+      "imageUrl": "https://storage.googleapis.com/project-avastar/39062a47-1a52-4b25-9a8c-a520696297f7.png",
       "imageHint": "graphic designer"
     },
     {
