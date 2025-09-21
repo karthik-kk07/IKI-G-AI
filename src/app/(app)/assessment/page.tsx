@@ -144,7 +144,7 @@ export default function AssessmentPage() {
                 <ArrowLeft className="mr-2 h-4 w-4" /> Previous
               </Button>
                {currentStep < steps.length - 1 ? (
-                <Button type="button" onClick={handleNext} disabled={!formState.isValid}>
+                <Button type="button" onClick={handleNext}>
                   Next <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               ) : (
