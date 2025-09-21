@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Ikigai Navigator',
+  title: 'IKI-G-AI',
   description: 'Find your Ikigai and navigate your career path with AI-powered guidance.',
 };
 

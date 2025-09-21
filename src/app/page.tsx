@@ -64,7 +64,7 @@ export default function Home() {
               Navigate Your Career with <span className="text-primary">Ikigai</span>
             </h1>
             <p className="max-w-2xl mx-auto text-lg text-foreground/80 mb-8">
-              Ikigai Navigator helps you discover your life's purpose and translates it into a personalized, AI-driven career roadmap.
+              IKI-G-AI helps you discover your life's purpose and translates it into a personalized, AI-driven career roadmap.
             </p>
             <Button asChild size="lg">
               <Link href="/dashboard">Get Started Now</Link>
@@ -136,7 +136,7 @@ export default function Home() {
       </main>
       <footer className="border-t bg-card">
         <div className="container py-6 text-center text-muted-foreground text-sm">
-          <p>&copy; {new Date().getFullYear()} Ikigai Navigator. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} IKI-G-AI. All rights reserved.</p>
         </div>
       </footer>
     </div>

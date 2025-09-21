@@ -22,7 +22,7 @@ export default function Logo({ className }: { className?: string }) {
         <path d="M6 12h12" />
       </svg>
       <span className="font-headline text-xl font-bold tracking-tight">
-        Ikigai Navigator
+        IKI-G-AI
       </span>
     </Link>
   );

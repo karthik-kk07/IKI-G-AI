@@ -51,7 +51,7 @@ export default function LoginPage() {
             <Logo />
           </div>
           <CardTitle className="font-headline text-2xl">Welcome Back</CardTitle>
-          <CardDescription>Sign in to continue to your Ikigai Navigator</CardDescription>
+          <CardDescription>Sign in to continue to your IKI-G-AI</CardDescription>
         </CardHeader>
         <CardContent>
           <Button className="w-full" onClick={handleSignIn}>
