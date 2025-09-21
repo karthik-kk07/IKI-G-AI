@@ -47,7 +47,7 @@ const steps = [
     description: 'What services or products could you offer that people would be willing to pay for?\nWhat is a desirable skill in your field or a field you\'re interested in?\nWhat jobs or careers align with your skills and offer a sustainable living?\nWhat kind of lifestyle do you want to have, and what kind of work can support that?', 
     label: 'I can be paid for...' 
   },
-];
+] as const;
 
 export default function AssessmentPage() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -66,41 +66,42 @@ export default function AssessmentPage() {
     mode: 'onChange',
   });
 
-  const processStep: SubmitHandler<IkigaiFormData> = async (data) => {
-    if (currentStep < steps.length - 1) {
-      setCurrentStep(currentStep + 1);
-    } else {
-      setIsSubmitting(true);
-      try {
-        const ikigaiComponents = `What I love: ${data.love}\nWhat I'm good at: ${data.goodAt}\nWhat the world needs: ${data.worldNeeds}\nWhat I can be paid for: ${data.paidFor}`;
-        const assessmentParams = new URLSearchParams({
-          skills: data.goodAt,
-          preferences: data.paidFor,
-          ikigaiComponents,
-        });
-
-        // Store assessment data in local storage for the chat feature
-        localStorage.setItem('assessmentData', JSON.stringify(data));
-        
-        // This is a client component, we cannot directly use the AI flow's output to redirect.
-        // We pass the parameters to the roadmap page, which will be a server component and will call the AI flow.
-        router.push(`/roadmap?${assessmentParams.toString()}`);
-
-      } catch (error) {
-        console.error('Failed to generate recommendations:', error);
-        toast({
-          title: 'Error',
-          description: 'Could not generate your roadmap. Please try again.',
-          variant: 'destructive',
-        });
-        setIsSubmitting(false);
+  const { trigger, formState } = form;
+  const currentStepId = steps[currentStep].id;
+  
+  const handleNext = async () => {
+    const isValid = await trigger(currentStepId);
+    if (isValid) {
+      if (currentStep < steps.length - 1) {
+        setCurrentStep(currentStep + 1);
       }
     }
   };
 
-  const currentStepId = steps[currentStep].id as keyof IkigaiFormData;
-  const isStepValid = !form.getFieldState(currentStepId).invalid;
+  const onSubmit: SubmitHandler<IkigaiFormData> = async (data) => {
+    setIsSubmitting(true);
+    try {
+      const ikigaiComponents = `What I love: ${data.love}\nWhat I'm good at: ${data.goodAt}\nWhat the world needs: ${data.worldNeeds}\nWhat I can be paid for: ${data.paidFor}`;
+      const assessmentParams = new URLSearchParams({
+        skills: data.goodAt,
+        preferences: data.paidFor,
+        ikigaiComponents,
+      });
 
+      localStorage.setItem('assessmentData', JSON.stringify(data));
+      
+      router.push(`/roadmap?${assessmentParams.toString()}`);
+
+    } catch (error) {
+      console.error('Failed to generate recommendations:', error);
+      toast({
+        title: 'Error',
+        description: 'Could not generate your roadmap. Please try again.',
+        variant: 'destructive',
+      });
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <div className="container py-10">
@@ -113,7 +114,7 @@ export default function AssessmentPage() {
           <CardDescription className="whitespace-pre-line">{steps[currentStep].description}</CardDescription>
         </CardHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(processStep)}>
+          <form onSubmit={form.handleSubmit(onSubmit)}>
             <CardContent>
               <FormField
                 control={form.control}
@@ -142,19 +143,19 @@ export default function AssessmentPage() {
               >
                 <ArrowLeft className="mr-2 h-4 w-4" /> Previous
               </Button>
-              <Button type="submit" disabled={isSubmitting || !isStepValid}>
-                {currentStep === steps.length - 1 ? (
-                  isSubmitting ? 'Generating...' : (
+               {currentStep < steps.length - 1 ? (
+                <Button type="button" onClick={handleNext} disabled={!formState.isValid}>
+                  Next <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              ) : (
+                <Button type="submit" disabled={isSubmitting || !formState.isValid}>
+                  {isSubmitting ? 'Generating...' : (
                     <>
                       Generate My Roadmap <Sparkles className="ml-2 h-4 w-4" />
                     </>
-                  )
-                ) : (
-                  <>
-                    Next <ArrowRight className="ml-2 h-4 w-4" />
-                  </>
-                )}
-              </Button>
+                  )}
+                </Button>
+              )}
             </CardFooter>
           </form>
         </Form>
