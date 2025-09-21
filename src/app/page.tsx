@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote } from 'lucide-react';
+import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote, PlayCircle } from 'lucide-react';
 import Logo from '@/components/logo';
 import { UserNav } from '@/components/user-nav';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -13,6 +13,7 @@ import { auth } from '@/lib/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const features = [
   {
@@ -74,9 +75,30 @@ const testimonials = [
     }
 ];
 
+const faqs = [
+    {
+        question: "What is Ikigai?",
+        answer: "Ikigai is a Japanese concept that means 'a reason for being.' It's about finding the intersection of what you love, what you're good at, what the world needs, and what you can be paid for. Our platform is designed to help you discover your personal Ikigai."
+    },
+    {
+        question: "How does the AI generate my roadmap?",
+        answer: "Our advanced AI analyzes your answers from the assessment. It identifies patterns and connections between your passions, skills, and values to suggest career paths that align with your unique profile. It provides not just job titles, but a complete roadmap with actionable steps."
+    },
+    {
+        question: "Is my personal data secure?",
+        answer: "Absolutely. We prioritize your privacy. Your assessment data is stored securely and is only used to personalize your experience within the app. We do not share your personal information with third parties."
+    },
+    {
+        question: "Can I change my roadmap later?",
+        answer: "Yes! Your career journey is dynamic, and so is your roadmap. You can re-order steps, and as you grow and your interests evolve, you can retake the assessment to generate a new, updated roadmap at any time."
+    }
+]
 
 const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
 const copilotImage = PlaceHolderImages.find((p) => p.id === 'copilot');
+const whyIkigaiImage = PlaceHolderImages.find((p) => p.id === 'why-ikigai');
+const videoThumbnail = PlaceHolderImages.find((p) => p.id === 'video-thumbnail');
+const careerPreviewImage = PlaceHolderImages.find((p) => p.id === 'career-preview');
 
 
 export default function Home() {
@@ -165,8 +187,25 @@ export default function Home() {
             </div>
           </div>
         </section>
+        
+        <section id="why-ikigai" className="py-24">
+          <div className="container grid md:grid-cols-2 gap-12 items-center">
+            <div className="relative aspect-square rounded-xl overflow-hidden shadow-2xl">
+              {whyIkigaiImage && (
+                <Image src={whyIkigaiImage.imageUrl} alt={whyIkigaiImage.description} fill className="object-cover" data-ai-hint={whyIkigaiImage.imageHint} />
+              )}
+            </div>
+            <div>
+              <h2 className="font-headline text-3xl md:text-4xl font-bold">What is Ikigai?</h2>
+              <p className="text-muted-foreground mt-4 mb-6 text-lg">
+                Ikigai (生き甲斐) is a Japanese concept that means "a reason for being." It's the source of value in one's life or the things that make one's life worthwhile. It’s about finding the intersection where your passions and talents converge with the things that the world needs and is willing to pay for.
+              </p>
+              <p className="text-muted-foreground text-lg">Our platform is designed to guide you through this process of self-discovery, helping you find clarity, purpose, and a career that truly fulfills you.</p>
+            </div>
+          </div>
+        </section>
 
-        <section id="how-it-works" className="py-24">
+        <section id="how-it-works" className="py-24 bg-card border-y">
             <div className="container">
                 <div className="text-center mb-16">
                     <h2 className="font-headline text-3xl md:text-4xl font-bold">Your Journey to Purpose in 3 Simple Steps</h2>
@@ -184,6 +223,25 @@ export default function Home() {
                             <p className="text-muted-foreground">{step.description}</p>
                         </div>
                     ))}
+                </div>
+            </div>
+        </section>
+
+        <section id="video-walkthrough" className="py-24">
+            <div className="container">
+                <div className="text-center mb-12">
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">See IKI-G-AI in Action</h2>
+                    <p className="max-w-xl mx-auto text-muted-foreground mt-4">
+                        Watch this short video to see how you can go from uncertainty to a clear career path in minutes.
+                    </p>
+                </div>
+                <div className="relative aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl cursor-pointer group">
+                    {videoThumbnail && (
+                        <Image src={videoThumbnail.imageUrl} alt={videoThumbnail.description} fill className="object-cover" data-ai-hint={videoThumbnail.imageHint} />
+                    )}
+                    <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <PlayCircle className="w-24 h-24 text-white/80 transform transition-transform group-hover:scale-110" />
+                    </div>
                 </div>
             </div>
         </section>
@@ -220,8 +278,50 @@ export default function Home() {
             </div>
           </div>
         </section>
+        
+        <section id="career-preview" className="py-24">
+          <div className="container text-center">
+            <h2 className="font-headline text-3xl md:text-4xl font-bold">From Assessment to Action</h2>
+            <p className="max-w-xl mx-auto text-muted-foreground mt-4 mb-12">
+              Our AI doesn't just give you vague suggestions. It builds a tangible, step-by-step roadmap to guide you. Here's a glimpse of what your future could look like.
+            </p>
+            <Card className="max-w-2xl mx-auto text-left shadow-xl">
+              <CardHeader>
+                <CardTitle className="font-headline">Example Roadmap: UI/UX Designer</CardTitle>
+                <p className="text-primary">Based on a passion for art, strong problem-solving skills, and a desire to create helpful technology.</p>
+              </CardHeader>
+              <CardContent className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-6">
+                <div className="flex flex-col items-center">
+                  <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">1</div>
+                  <div className="w-px h-full bg-border my-2"></div>
+                </div>
+                <div>
+                  <h4 className="font-semibold">Foundation Building</h4>
+                  <p className="text-muted-foreground text-sm">Enroll in an online UI/UX bootcamp (e.g., Coursera, General Assembly). Master Figma and Adobe XD.</p>
+                </div>
 
-        <section id="testimonials" className="py-24">
+                <div className="flex flex-col items-center">
+                  <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">2</div>
+                  <div className="w-px h-full bg-border my-2"></div>
+                </div>
+                <div>
+                  <h4 className="font-semibold">Build a Portfolio</h4>
+                  <p className="text-muted-foreground text-sm">Complete 3-5 personal projects. Focus on creating detailed case studies for each, from problem to solution.</p>
+                </div>
+                
+                <div className="flex flex-col items-center">
+                  <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">3</div>
+                </div>
+                <div>
+                  <h4 className="font-semibold">Gain Experience & Network</h4>
+                  <p className="text-muted-foreground text-sm">Start applying for internships or freelance work. Attend local and virtual design meetups to build connections.</p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        <section id="testimonials" className="py-24 bg-card border-y">
             <div className="container">
                 <div className="text-center mb-16">
                     <h2 className="font-headline text-3xl md:text-4xl font-bold">Loved by Professionals and Dreamers</h2>
@@ -255,6 +355,27 @@ export default function Home() {
                     })}
                 </div>
             </div>
+        </section>
+
+        <section id="faq" className="py-24">
+          <div className="container max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="font-headline text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
+              <p className="max-w-xl mx-auto text-muted-foreground mt-4">
+                Have questions? We've got answers. Here are some of the most common things we get asked.
+              </p>
+            </div>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-lg font-semibold text-left">{faq.question}</AccordionTrigger>
+                  <AccordionContent className="text-base text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </section>
 
         <section id="newsletter" className="py-24 bg-primary/5 border-t">

@@ -54,6 +54,24 @@
       "description": "Avatar for Jessica Y.",
       "imageUrl": "https://picsum.photos/seed/testimonial3/100/100",
       "imageHint": "person professional"
+    },
+    {
+      "id": "why-ikigai",
+      "description": "Four overlapping circles representing the ikigai concept.",
+      "imageUrl": "https://picsum.photos/seed/ikigai-venn/600/600",
+      "imageHint": "venn diagram"
+    },
+    {
+      "id": "video-thumbnail",
+      "description": "Thumbnail for a video walkthrough of the app.",
+      "imageUrl": "https://picsum.photos/seed/video-thumb/1200/675",
+      "imageHint": "abstract gradient"
+    },
+    {
+      "id": "career-preview",
+      "description": "A professional working in their new career.",
+      "imageUrl": "https://picsum.photos/seed/career-preview/600/400",
+      "imageHint": "graphic designer"
     }
   ]
 }
