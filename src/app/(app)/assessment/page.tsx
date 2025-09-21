@@ -57,6 +57,9 @@ export default function AssessmentPage() {
           preferences: data.paidFor,
           ikigaiComponents,
         });
+
+        // Store assessment data in local storage for the chat feature
+        localStorage.setItem('assessmentData', JSON.stringify(data));
         
         // This is a client component, we cannot directly use the AI flow's output to redirect.
         // We pass the parameters to the roadmap page, which will be a server component and will call the AI flow.

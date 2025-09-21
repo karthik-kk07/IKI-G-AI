@@ -12,13 +12,14 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const ProvideAICareerCounselorChatInputSchema = z.object({
-  question: z.string().describe('The user\u2019s question about their career path.'),
-  assessmentData: z.string().describe('The user\u2019s assessment data, including skills and preferences.'),
+  question: z.string().describe('The user’s question about their career path.'),
+  assessmentData: z.string().describe('The user’s assessment data, including skills and preferences.'),
+  userName: z.string().describe("The user's name."),
 });
 export type ProvideAICareerCounselorChatInput = z.infer<typeof ProvideAICareerCounselorChatInputSchema>;
 
 const ProvideAICareerCounselorChatOutputSchema = z.object({
-  answer: z.string().describe('The AI\u2019s answer to the user\u2019s question, providing personalized career guidance.'),
+  answer: z.string().describe('The AI’s answer to the user’s question, providing personalized career guidance.'),
 });
 export type ProvideAICareerCounselorChatOutput = z.infer<typeof ProvideAICareerCounselorChatOutputSchema>;
 
@@ -32,6 +33,8 @@ const prompt = ai.definePrompt({
   output: {schema: ProvideAICareerCounselorChatOutputSchema},
   prompt: `You are an AI career counselor providing personalized guidance to users.
 
+  Your name is Kai. You are speaking with {{{userName}}}. Address them by their name to make the conversation more personal.
+  
   Use the assessment data to understand the user's skills, preferences, and Ikigai components. Tailor your advice to their unique situation.
 
   User Assessment Data: {{{assessmentData}}}

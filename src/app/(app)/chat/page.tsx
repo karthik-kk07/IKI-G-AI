@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -10,9 +10,13 @@ import { Input } from '@/components/ui/input';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { cn } from '@/lib/utils';
-import { SendHorizonal, Bot, User, Sparkles } from 'lucide-react';
+import { SendHorizonal, Bot, User, Sparkles, AlertTriangle } from 'lucide-react';
 import { provideAICareerCounselorChat } from '@/ai/flows/provide-ai-career-counselor-chat';
 import { useToast } from '@/hooks/use-toast';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
+import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
+import Link from 'next/link';
 
 const chatSchema = z.object({
   message: z.string().min(1, 'Message cannot be empty.'),
@@ -30,12 +34,42 @@ export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      text: "Hello! I'm your AI career counselor. Ask me anything about your career path, skills, or roadmap.",
+      text: "Hello! I'm Kai, your AI career counselor. Ask me anything about your career path, skills, or roadmap.",
       sender: 'ai',
     },
   ]);
   const [isSending, setIsSending] = useState(false);
+  const [assessmentData, setAssessmentData] = useState<string | null>(null);
+  const [userName, setUserName] = useState<string>('there');
+  const [hasAssessment, setHasAssessment] = useState<boolean | null>(null);
   const { toast } = useToast();
+
+  useEffect(() => {
+    // Check for assessment data in local storage
+    const storedData = localStorage.getItem('assessmentData');
+    if (storedData) {
+      try {
+        const parsedData = JSON.parse(storedData);
+        const ikigaiComponents = `What I love: ${parsedData.love}\nWhat I'm good at: ${parsedData.goodAt}\nWhat the world needs: ${parsedData.worldNeeds}\nWhat I can be paid for: ${parsedData.paidFor}`;
+        setAssessmentData(ikigaiComponents);
+        setHasAssessment(true);
+      } catch (error) {
+        console.error("Failed to parse assessment data from local storage", error);
+        setHasAssessment(false);
+      }
+    } else {
+      setHasAssessment(false);
+    }
+    
+    // Get user's name
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserName(user.displayName || 'there');
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const form = useForm<ChatFormData>({
     resolver: zodResolver(chatSchema),
@@ -45,6 +79,15 @@ export default function ChatPage() {
   });
 
   const onSubmit: SubmitHandler<ChatFormData> = async (data) => {
+    if (!assessmentData) {
+      toast({
+        title: 'Complete Assessment First',
+        description: 'Please complete your Ikigai assessment to get personalized advice.',
+        variant: 'destructive',
+      });
+      return;
+    }
+
     setIsSending(true);
     const userMessage: Message = {
       id: Date.now(),
@@ -55,11 +98,10 @@ export default function ChatPage() {
     form.reset();
 
     try {
-      // In a real app, assessmentData would be fetched from a database.
-      const assessmentData = "User is interested in technology, good at programming, and wants a remote job with good work-life balance.";
       const response = await provideAICareerCounselorChat({
         question: data.message,
         assessmentData: assessmentData,
+        userName: userName,
       });
 
       const aiMessage: Message = {
@@ -89,6 +131,20 @@ export default function ChatPage() {
           <h1 className="font-headline text-3xl font-bold">AI Career Counselor</h1>
           <p className="text-muted-foreground">Your personal guide for career-related questions.</p>
       </div>
+
+      {hasAssessment === false && (
+        <Alert variant="destructive" className="mb-6">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle>No Assessment Data Found</AlertTitle>
+          <AlertDescription>
+            To get personalized career advice, you need to complete the assessment first. 
+            <Button variant="link" asChild className="p-0 h-auto ml-1">
+              <Link href="/assessment">Start your assessment now.</Link>
+            </Button>
+          </AlertDescription>
+        </Alert>
+      )}
+
       <div className="flex-1 flex flex-col border rounded-lg bg-card overflow-hidden">
         <ScrollArea className="flex-1 p-6">
           <div className="space-y-6">
@@ -107,7 +163,7 @@ export default function ChatPage() {
                 )}
                 <div
                   className={cn(
-                    'max-w-md rounded-lg px-4 py-3',
+                    'max-w-prose rounded-lg px-4 py-3',
                     message.sender === 'user'
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-secondary'
@@ -147,14 +203,14 @@ export default function ChatPage() {
                       <Input
                         placeholder="Ask about career paths, skills, or interview tips..."
                         autoComplete="off"
-                        disabled={isSending}
+                        disabled={isSending || hasAssessment === false}
                         {...field}
                       />
                     </FormControl>
                   </FormItem>
                 )}
               />
-              <Button type="submit" disabled={isSending}>
+              <Button type="submit" disabled={isSending || hasAssessment === false}>
                 <SendHorizonal className="w-5 h-5" />
                 <span className="sr-only">Send</span>
               </Button>
