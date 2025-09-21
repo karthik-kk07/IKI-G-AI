@@ -24,9 +24,6 @@ import Logo from '@/components/logo';
 import { UserNav } from '@/components/user-nav';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { auth } from '@/lib/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuTrigger, NavigationMenuContent, NavigationMenuLink, navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
@@ -153,7 +150,6 @@ const blogPosts = [
   },
 ];
 
-const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
 const copilotImage = PlaceHolderImages.find((p) => p.id === 'copilot');
 const whyIkigaiImage = PlaceHolderImages.find((p) => p.id === 'why-ikigai');
 const videoThumbnail = PlaceHolderImages.find((p) => p.id === 'video-thumbnail');
@@ -177,15 +173,7 @@ const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWit
 ListItem.displayName = 'ListItem';
 
 export default function Home() {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
   const router = useRouter();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setIsLoggedIn(!!user);
-    });
-    return () => unsubscribe();
-  }, []);
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -245,17 +233,15 @@ export default function Home() {
             </NavigationMenuList>
           </NavigationMenu>
           <div className="flex flex-1 items-center justify-end space-x-4">
-            {isLoggedIn !== null && !isLoggedIn && (
               <Button asChild>
                 <Link href="/login">Sign In & Get Started</Link>
               </Button>
-            )}
           </div>
         </div>
       </header>
       <main className="flex-1">
-        <section className="relative pt-24 pb-32 md:pt-32 md:pb-40 lg:pt-40 lg:pb-48 overflow-hidden bg-[hsl(var(--muted))]">
-          <div className="absolute inset-0 z-0">
+        <section className="relative pt-24 pb-32 md:pt-32 md:pb-40 lg:pt-40 lg:pb-48 overflow-hidden bg-background">
+           <div className="absolute inset-0 z-0">
              <svg
               width="100%"
               height="100%"
@@ -304,7 +290,7 @@ export default function Home() {
                   `}
                 </style>
               </defs>
-              <rect width="100%" height="100%" fill="hsl(var(--muted))" />
+              <rect width="100%" height="100%" fill="hsl(var(--background))" />
               <g className="line-group" stroke="hsl(var(--primary))" strokeWidth="0.5">
                   <line className="line" x1="10%" y1="20%" x2="90%" y2="80%" style={{ animationDelay: '0s' }} />
                   <line className="line" x1="30%" y1="90%" x2="70%" y2="10%" style={{ animationDelay: '2s' }} />

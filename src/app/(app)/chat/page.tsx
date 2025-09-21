@@ -13,8 +13,6 @@ import { cn } from '@/lib/utils';
 import { SendHorizonal, Bot, User, Sparkles, AlertTriangle } from 'lucide-react';
 import { provideAICareerCounselorChat } from '@/ai/flows/provide-ai-career-counselor-chat';
 import { useToast } from '@/hooks/use-toast';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
 import { Alert, AlertTitle, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
 
@@ -40,7 +38,7 @@ export default function ChatPage() {
   ]);
   const [isSending, setIsSending] = useState(false);
   const [assessmentData, setAssessmentData] = useState<string | null>(null);
-  const [userName, setUserName] = useState<string>('there');
+  const [userName, setUserName] = useState<string>('Demo User');
   const [hasAssessment, setHasAssessment] = useState<boolean | null>(null);
   const { toast } = useToast();
 
@@ -60,15 +58,6 @@ export default function ChatPage() {
     } else {
       setHasAssessment(false);
     }
-    
-    // Get user's name
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserName(user.displayName || 'there');
-      }
-    });
-
-    return () => unsubscribe();
   }, []);
 
   const form = useForm<ChatFormData>({
