@@ -63,6 +63,7 @@ export default function AssessmentPage() {
       worldNeeds: '',
       paidFor: '',
     },
+    mode: 'onChange',
   });
 
   const processStep: SubmitHandler<IkigaiFormData> = async (data) => {
@@ -98,6 +99,8 @@ export default function AssessmentPage() {
   };
 
   const currentStepId = steps[currentStep].id as keyof IkigaiFormData;
+  const isStepValid = !!form.watch(currentStepId) && !form.getFieldState(currentStepId).invalid;
+
 
   return (
     <div className="container py-10">
@@ -139,7 +142,7 @@ export default function AssessmentPage() {
               >
                 <ArrowLeft className="mr-2 h-4 w-4" /> Previous
               </Button>
-              <Button type="submit" disabled={isSubmitting || !form.formState.dirtyFields[currentStepId]}>
+              <Button type="submit" disabled={isSubmitting || !isStepValid}>
                 {currentStep === steps.length - 1 ? (
                   isSubmitting ? 'Generating...' : (
                     <>
