@@ -39,7 +39,7 @@ export default function DashboardPage() {
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
         {features.map((feature) => (
-          <Card key={feature.title} className="flex flex-col">
+          <Card key={feature.title} className="flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
             <CardHeader>
                 {feature.icon}
               <CardTitle className="font-headline">{feature.title}</CardTitle>
@@ -56,15 +56,15 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      <Card className="mt-10 bg-primary/10 border-primary/20">
-        <CardHeader className="grid md:grid-cols-[1fr_200px] items-center gap-6">
+      <Card className="mt-10 bg-accent/10 border-accent/20">
+        <CardHeader className="grid md:grid-cols-[1fr_auto] items-center gap-6">
           <div>
-            <CardTitle className="font-headline text-2xl">Ready to find your Ikigai?</CardTitle>
-            <CardDescription className="mt-2 text-base text-primary/80">
+            <CardTitle className="font-headline text-2xl text-accent-foreground">Ready to find your Ikigai?</CardTitle>
+            <CardDescription className="mt-2 text-base text-accent-foreground/80">
               The first step is a deep dive into what makes you unique. Our assessment is designed to be insightful and thought-provoking.
             </CardDescription>
           </div>
-          <Button asChild size="lg">
+          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
             <Link href="/assessment">Start the Ikigai Assessment</Link>
           </Button>
         </CardHeader>

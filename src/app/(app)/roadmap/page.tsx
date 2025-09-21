@@ -1,12 +1,12 @@
 import { Suspense } from 'react';
-import { generatePersonalizedCareerRecommendations } from '@/ai/flows/generate-personalized-career-recommendations';
+import { generateCareerRecommendations } from '@/ai/flows/generate-career-recommendations';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Terminal, Lightbulb, GripVertical } from 'lucide-react';
-import { Separator } from '@/components/ui/separator';
+import { Terminal, Lightbulb } from 'lucide-react';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { Skeleton } from '@/components/ui/skeleton';
+import { RoadmapDisplay } from '@/components/roadmap-display';
 
 interface RoadmapPageProps {
   searchParams: {
@@ -49,13 +49,16 @@ function ReadinessChecklist() {
 }
 
 async function RoadmapGenerator({ skills, preferences, ikigaiComponents }: { skills: string; preferences: string; ikigaiComponents: string; }) {
-  const { careerRecommendations, reasoning } = await generatePersonalizedCareerRecommendations({
+  const userUniquePath = `Based on the user's skills: ${skills}, preferences: ${preferences}, and Ikigai components: ${ikigaiComponents}, the user's unique path is formulated`;
+
+  const { careerRecommendations, reasoning } = await generateCareerRecommendations({
     skills,
     preferences,
     ikigaiComponents,
+    userUniquePath,
   });
 
-  const roadmapSteps = careerRecommendations.split('\n').filter(line => line.trim().startsWith('1.') || line.trim().startsWith('2.') || line.trim().startsWith('3.') || line.trim().startsWith('4.') || line.trim().startsWith('5.'));
+  const roadmapSteps = careerRecommendations.split('\n').filter(line => /^\s*\d+\.\s*/.test(line)).map(step => step.replace(/^\s*\d+\.\s*/, ''));
 
   return (
     <div className="grid lg:grid-cols-3 gap-8">
@@ -66,16 +69,7 @@ async function RoadmapGenerator({ skills, preferences, ikigaiComponents }: { ski
             <CardDescription>An AI-generated guide to help you navigate your career path. Drag and drop to reorder steps.</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
-              {roadmapSteps.length > 0 ? (
-                roadmapSteps.map((step, index) => (
-                  <Card key={index} className="flex items-center p-4 bg-background hover:bg-accent/50 transition-colors cursor-grab">
-                    <GripVertical className="h-5 w-5 text-muted-foreground mr-4" />
-                    <p className="flex-grow text-base">{step.replace(/^\d+\.\s*/, '')}</p>
-                  </Card>
-                ))
-              ) : <p className="text-muted-foreground">The AI did not produce a valid list of roadmap steps. The full response is below.</p>}
-            </div>
+             <RoadmapDisplay initialSteps={roadmapSteps} />
           </CardContent>
         </Card>
         

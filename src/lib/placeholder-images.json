@@ -12,6 +12,30 @@
       "description": "A well-organized and inspiring workspace.",
       "imageUrl": "https://picsum.photos/seed/dashboard/800/400",
       "imageHint": "workspace desk"
+    },
+    {
+      "id": "feature1",
+      "description": "A person looking thoughtful while working on a complex problem, representing the assessment phase.",
+      "imageUrl": "https://picsum.photos/seed/feature1/600/400",
+      "imageHint": "person thinking"
+    },
+    {
+      "id": "feature2",
+      "description": "A futuristic holographic interface displaying charts and data, representing AI recommendations.",
+      "imageUrl": "https://picsum.photos/seed/feature2/600/400",
+      "imageHint": "futuristic interface"
+    },
+    {
+      "id": "feature3",
+      "description": "A winding path leading up a mountain, representing a career journey.",
+      "imageUrl": "https://picsum.photos/seed/feature3/600/400",
+      "imageHint": "path mountain"
+    },
+    {
+      "id": "copilot",
+      "description": "A person working on a laptop in a modern, bright environment, representing the career co-pilot feature.",
+      "imageUrl": "https://picsum.photos/seed/copilot/600/600",
+      "imageHint": "woman working laptop"
     }
   ]
 }
