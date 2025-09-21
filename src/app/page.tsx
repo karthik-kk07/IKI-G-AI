@@ -392,11 +392,11 @@ export default function Home() {
             <div className="container">
                 <h3 className="text-center text-muted-foreground font-semibold uppercase tracking-widest mb-8">As Featured In</h3>
                 <div className="flex justify-center items-center gap-x-12 gap-y-4 flex-wrap">
-                    <span className="font-headline text-2xl text-muted-foreground/60">TechForward</span>
-                    <span className="font-headline text-2xl text-muted-foreground/60">CareerWeekly</span>
-                    <span className="font-headline text-2xl text-muted-foreground/60">AI Innovators</span>
-                    <span className="font-headline text-2xl text-muted-foreground/60">Purpose Mag</span>
-                    <span className="font-headline text-2xl text-muted-foreground/60">NextGen</span>
+                    <span className="font-headline text-2xl text-muted-foreground/60 filter grayscale hover:grayscale-0 transition-all">TechForward</span>
+                    <span className="font-headline text-2xl text-muted-foreground/60 filter grayscale hover:grayscale-0 transition-all">CareerWeekly</span>
+                    <span className="font-headline text-2xl text-muted-foreground/60 filter grayscale hover:grayscale-0 transition-all">AI Innovators</span>
+                    <span className="font-headline text-2xl text-muted-foreground/60 filter grayscale hover:grayscale-0 transition-all">Purpose Mag</span>
+                    <span className="font-headline text-2xl text-muted-foreground/60 filter grayscale hover:grayscale-0 transition-all">NextGen</span>
                 </div>
             </div>
         </section>
