@@ -14,6 +14,12 @@
       "imageHint": "workspace desk"
     },
     {
+      "id": "features",
+      "description": "An illustration showing a person interacting with a futuristic interface to plan their career path.",
+      "imageUrl": "https://storage.googleapis.com/project-avastar/a1353e69-111a-471c-99a3-a7566f1317e3.png",
+      "imageHint": "career planning interface"
+    },
+    {
       "id": "feature1",
       "description": "A person looking thoughtful while working on a complex problem, representing the assessment phase.",
       "imageUrl": "https://storage.googleapis.com/project-avastar/a953e5e4-23a4-433d-881a-8227c8fb4049.png",
