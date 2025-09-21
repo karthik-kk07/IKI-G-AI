@@ -31,7 +31,7 @@ export default function DashboardPage() {
   return (
     <div className="container py-10">
       <h1 className="font-headline text-3xl md:text-4xl font-bold tracking-tight">
-        Welcome to your Career Cockpit
+        Welcome to your Ikigai
       </h1>
       <p className="text-lg text-muted-foreground mt-2">
         This is your control center for navigating your professional journey.
