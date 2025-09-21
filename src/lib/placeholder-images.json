@@ -1,3 +1,17 @@
+
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "A person looking at a sunrise over mountains, symbolizing a new beginning and finding a path.",
+      "imageUrl": "https://picsum.photos/seed/hero/1200/800",
+      "imageHint": "sunrise mountains"
+    },
+    {
+      "id": "dashboard-welcome",
+      "description": "A well-organized and inspiring workspace.",
+      "imageUrl": "https://picsum.photos/seed/dashboard/800/400",
+      "imageHint": "workspace desk"
+    }
+  ]
 }
