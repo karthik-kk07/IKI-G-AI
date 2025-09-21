@@ -15,7 +15,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const features = [
   {
@@ -136,7 +135,6 @@ const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
 const copilotImage = PlaceHolderImages.find((p) => p.id === 'copilot');
 const whyIkigaiImage = PlaceHolderImages.find((p) => p.id === 'why-ikigai');
 const videoThumbnail = PlaceHolderImages.find((p) => p.id === 'video-thumbnail');
-const careerPreviewImage = PlaceHolderImages.find((p) => p.id === 'career-preview');
 
 
 export default function Home() {
