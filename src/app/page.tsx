@@ -12,6 +12,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { auth } from '@/lib/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
+import { Input } from '@/components/ui/input';
 
 const features = [
   {
@@ -254,6 +255,28 @@ export default function Home() {
                     })}
                 </div>
             </div>
+        </section>
+
+        <section id="newsletter" className="py-24 bg-primary/5 border-t">
+          <div className="container">
+            <div className="max-w-xl mx-auto text-center">
+              <h2 className="font-headline text-3xl font-bold">Stay Ahead of the Curve</h2>
+              <p className="mt-2 text-muted-foreground">
+                Subscribe to our newsletter for the latest insights on career development, AI trends, and personal growth.
+              </p>
+              <form className="mt-6 flex max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
+                <Input 
+                  type="email" 
+                  placeholder="Enter your email"
+                  className="flex-1 rounded-r-none focus-visible:ring-offset-0 focus-visible:ring-primary"
+                  aria-label="Email for newsletter"
+                />
+                <Button type="submit" className="rounded-l-none">
+                  Subscribe
+                </Button>
+              </form>
+            </div>
+          </div>
         </section>
 
       </main>
