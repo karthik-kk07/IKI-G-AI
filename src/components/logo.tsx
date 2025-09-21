@@ -1,9 +1,8 @@
-import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 export default function Logo({ className }: { className?: string }) {
   return (
-    <Link href="/" className={cn("flex items-center gap-2", className)}>
+    <div className={cn("flex items-center gap-2", className)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
@@ -24,6 +23,6 @@ export default function Logo({ className }: { className?: string }) {
       <span className="font-headline text-xl font-bold tracking-tight">
         IKI-G-AI
       </span>
-    </Link>
+    </div>
   );
 }

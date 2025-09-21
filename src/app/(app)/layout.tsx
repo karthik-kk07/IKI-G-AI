@@ -29,7 +29,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </div>
         </div>
         <div className="container flex h-16 items-center">
-          <Logo />
+          <Link href="/">
+            <Logo />
+          </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium ml-10">
              <NavigationMenu>
                 <NavigationMenuList>
