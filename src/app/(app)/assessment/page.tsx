@@ -99,7 +99,7 @@ export default function AssessmentPage() {
   };
 
   const currentStepId = steps[currentStep].id as keyof IkigaiFormData;
-  const isStepValid = !!form.watch(currentStepId) && !form.getFieldState(currentStepId).invalid;
+  const isStepValid = !form.getFieldState(currentStepId).invalid;
 
 
   return (
@@ -120,7 +120,7 @@ export default function AssessmentPage() {
                 name={currentStepId}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-semibold">{steps[currentStep].label}</FormLabel>
+                    <FormLabel className="font-semibold">{steps[currentstep].label}</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Be as detailed as you like..."
