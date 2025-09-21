@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -7,6 +9,9 @@ import Logo from '@/components/logo';
 import { UserNav } from '@/components/user-nav';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { auth } from '@/lib/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
 
 const features = [
   {
@@ -74,13 +79,28 @@ const copilotImage = PlaceHolderImages.find((p) => p.id === 'copilot');
 
 
 export default function Home() {
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsLoggedIn(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="container flex h-16 items-center">
           <Logo />
           <div className="flex flex-1 items-center justify-end space-x-4">
-            <UserNav />
+            {isLoggedIn !== null && (
+              isLoggedIn ? <UserNav /> : (
+                <Button asChild>
+                  <Link href="/login">Sign In & Get Started</Link>
+                </Button>
+              )
+            )}
           </div>
         </div>
       </header>
@@ -105,7 +125,7 @@ export default function Home() {
               Navigate Your Career with <span className="text-primary">IKI-G-AI</span>
             </h1>
             <p className="max-w-2xl mx-auto text-lg text-foreground/80 mb-8">
-              IKI-G-AI helps you discover your life's purpose and translates it into a personalized, AI-driven career roadmap.
+              Discover your life's purpose and translate it into a personalized, AI-driven career roadmap.
             </p>
             <Button asChild size="lg">
               <Link href="/dashboard">Get Started Now</Link>
