@@ -146,7 +146,6 @@ const blogPosts = [
 
 const whyIkigaiImage = PlaceHolderImages.find((p) => p.id === 'why-ikigai');
 const videoThumbnail = PlaceHolderImages.find((p) => p.id === 'video-thumbnail');
-const featuresImage = PlaceHolderImages.find((p) => p.id === 'features');
 
 
 const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(({ className, title, children, ...props }, ref) => {
@@ -337,24 +336,17 @@ export default function Home() {
               <h2 className="font-headline text-3xl md:text-4xl font-bold">A Smarter Way to Plan Your Career</h2>
               <p className="max-w-2xl mx-auto text-muted-foreground mt-4">Our platform integrates self-discovery with AI precision to guide you on a fulfilling professional journey.</p>
             </div>
-            <Card className="grid md:grid-cols-2 items-center gap-8 md:gap-12 p-8 shadow-xl">
-              <div className="relative min-h-[300px] md:min-h-[400px] rounded-lg overflow-hidden">
-                {featuresImage && (
-                  <Image src={featuresImage.imageUrl} alt="Smarter Career Planning" fill className="object-cover" data-ai-hint={featuresImage.imageHint} />
-                )}
-              </div>
-              <div className="space-y-8">
-                {features.map((feature) => (
-                  <div key={feature.title} className="flex items-start gap-4">
-                    <div className="flex-shrink-0">{feature.icon}</div>
-                    <div>
-                      <h3 className="font-headline text-xl font-bold">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card>
+            <div className="grid md:grid-cols-3 gap-8">
+              {features.map((feature, index) => {
+                const image = PlaceHolderImages.find((p) => p.id === `feature${index + 1}`);
+                return (
+                <Card key={feature.title} className="p-8 text-center flex flex-col items-center">
+                  <div className="flex items-center justify-center h-20 w-20 rounded-full bg-primary/10 mb-6">{feature.icon}</div>
+                  <h3 className="font-headline text-xl font-bold mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground flex-grow">{feature.description}</p>
+                </Card>
+              )})}
+            </div>
           </div>
         </section>
 
@@ -425,7 +417,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-
+        
         <section id="career-copilot" className="py-24">
           <div className="container grid md:grid-cols-2 gap-12 items-center">
             <div>
