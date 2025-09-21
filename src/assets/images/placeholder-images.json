@@ -10,7 +10,7 @@
     {
       "id": "dashboard-welcome",
       "description": "A well-organized and inspiring workspace.",
-      "imageUrl": "https://picsum.photos/seed/workspace-vector/800/400",
+      "imageUrl": "https://picsum.photos/seed/dashboard/800/400",
       "imageHint": "workspace desk vector"
     },
     {
@@ -64,8 +64,8 @@
     {
       "id": "why-ikigai",
       "description": "Four overlapping circles representing the ikigai concept in a clean vector style.",
-      "imageUrl": "https://picsum.photos/seed/ikigai-diagram-vector/600/600",
-      "imageHint": "ikigai diagram vector"
+      "imageUrl": "https://i.ibb.co/k0gT83b/why-ikigai.png",
+      "imageHint": "ikigai custom diagram"
     },
     {
       "id": "video-thumbnail",
