@@ -10,7 +10,7 @@
     {
       "id": "dashboard-welcome",
       "description": "A well-organized and inspiring workspace.",
-      "imageUrl": "https://picsum.photos/seed/dashboard/800/400",
+      "imageUrl": "https://picsum.photos/seed/workspace-desk/800/400",
       "imageHint": "workspace desk vector"
     },
     {
@@ -22,8 +22,8 @@
     {
       "id": "feature1",
       "description": "A vector illustration of a person looking thoughtful while working on a complex problem, representing the assessment phase.",
-      "imageUrl": "https://picsum.photos/seed/thoughtful-assessment-vector/600/400",
-      "imageHint": "thoughtful assessment vector"
+      "imageUrl": "https://picsum.photos/seed/skills-passion-vector/600/400",
+      "imageHint": "skills passion vector"
     },
     {
       "id": "feature2",
