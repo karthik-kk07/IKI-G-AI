@@ -254,9 +254,70 @@ export default function Home() {
         </div>
       </header>
       <main className="flex-1">
-        <section className="relative pt-24 pb-32 md:pt-32 md:pb-40 lg:pt-40 lg:pb-48">
-          {heroImage && <Image src={heroImage.imageUrl} alt={heroImage.description} fill className="object-cover" priority data-ai-hint={heroImage.imageHint} />}
-          <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
+        <section className="relative pt-24 pb-32 md:pt-32 md:pb-40 lg:pt-40 lg:pb-48 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+             <svg
+              width="100%"
+              height="100%"
+              xmlns="http://www.w3.org/2000/svg"
+              className="absolute inset-0 z-0"
+              preserveAspectRatio="xMidYMid slice"
+            >
+              <defs>
+                <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                  <stop offset="0%" style={{ stopColor: 'hsl(var(--primary) / 0.1)', stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: 'hsl(var(--background))', stopOpacity: 1 }} />
+                </radialGradient>
+                 <style>
+                  {`
+                  @keyframes pulse {
+                    0%, 100% { r: 2; opacity: 0.8; }
+                    50% { r: 4; opacity: 1; }
+                  }
+                  @keyframes move {
+                    0% { transform: translate(0, 0); }
+                    25% { transform: translate(5px, 10px); }
+                    50% { transform: translate(-5px, -10px); }
+                    75% { transform: translate(10px, -5px); }
+                    100% { transform: translate(0, 0); }
+                  }
+                  .node {
+                    animation: pulse 4s infinite ease-in-out, move 20s infinite ease-in-out;
+                  }
+                  .node:nth-child(2) { animation-delay: -1s; }
+                  .node:nth-child(3) { animation-delay: -2s; }
+                  .node:nth-child(4) { animation-delay: -3s; }
+                  .node:nth-child(5) { animation-delay: -4s; }
+                  .node:nth-child(6) { animation-delay: -5s; }
+                  .line {
+                    stroke-dasharray: 1000;
+                    stroke-dashoffset: 1000;
+                    animation: dash 30s linear forwards;
+                    opacity: 0.15;
+                  }
+                  @keyframes dash { to { stroke-dashoffset: 0; } }
+                  `}
+                </style>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#grad1)" />
+              <g stroke="hsl(var(--primary))" strokeWidth="0.5">
+                  <line className="line" x1="10%" y1="20%" x2="90%" y2="80%" />
+                  <line className="line" x1="30%" y1="90%" x2="70%" y2="10%" />
+                  <line className="line" x1="50%" y1="50%" x2="10%" y2="90%" />
+                   <line className="line" x1="50%" y1="50%" x2="90%" y2="10%" />
+              </g>
+              <g fill="hsl(var(--primary))">
+                <circle className="node" cx="10%" cy="20%" r="3" />
+                <circle className="node" cx="90%" cy="80%" r="3" />
+                <circle className="node" cx="30%" cy="90%" r="3" />
+                <circle className="node" cx="70%" cy="10%" r="3" />
+                <circle className="node" cx="50%" cy="50%" r="3" />
+                 <circle className="node" cx="20%" cy="70%" r="2" />
+                 <circle className="node" cx="80%" cy="30%" r="2" />
+              </g>
+            </svg>
+          </div>
+
           <div className="container relative text-center">
             <div className="bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-medium inline-block mb-4 border border-primary/20">Find Your Purpose. Build Your Future.</div>
             <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-foreground">
@@ -609,7 +670,7 @@ export default function Home() {
                     </Link>
                   </li>
                   <li>
-                    <Link href="#faq" className="text-muted-foreground hover:text-foreground">
+                    <Link href="#faq" className="text-muted-foreground hovertext-foreground">
                       FAQs
                     </Link>
                   </li>
