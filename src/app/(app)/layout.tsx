@@ -9,6 +9,7 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuL
 
 const navItems = [
     { name: 'Dashboard', href: '/dashboard' },
+    { name: 'Assessment', href: '/assessment' },
     { name: 'Career Paths', href: '/career-paths' },
     { name: 'Contest Calendar', href: '/contest-calendar' },
     { name: 'Daily Tracker', href: '/daily-tracker' },

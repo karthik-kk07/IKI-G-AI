@@ -1,11 +1,18 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Award, CheckCircle, Code, Calendar, ListChecks, Users, Sparkles, Route } from 'lucide-react';
+import { ArrowRight, Award, CheckCircle, Code, Calendar, ListChecks, Users, Sparkles, Route, Compass } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 
 const features = [
+  {
+    icon: <Compass className="w-8 h-8 mb-4 text-primary" />,
+    title: 'Ikigai Assessment',
+    description: 'Discover your passions and skills to find the perfect career path for you.',
+    href: '/assessment',
+    cta: 'Start Assessment',
+  },
   {
     icon: <Route className="w-8 h-8 mb-4 text-primary" />,
     title: 'Career Paths',
@@ -26,13 +33,6 @@ const features = [
     description: 'Manage your daily tasks, set goals, and monitor your progress efficiently.',
     href: '/daily-tracker',
     cta: 'Track Today',
-  },
-   {
-    icon: <Users className="w-8 h-8 mb-4 text-primary" />,
-    title: 'Community Forum',
-    description: 'Connect with peers, ask questions, and share your knowledge with the community.',
-    href: '/forum',
-    cta: 'Join Discussion',
   },
 ];
 
