@@ -72,6 +72,24 @@
       "description": "A professional working in their new career.",
       "imageUrl": "https://picsum.photos/seed/career-preview/600/400",
       "imageHint": "graphic designer"
+    },
+    {
+      "id": "blog1",
+      "description": "An abstract image representing career transition and growth.",
+      "imageUrl": "https://picsum.photos/seed/blog1/600/400",
+      "imageHint": "abstract growth"
+    },
+    {
+      "id": "blog2",
+      "description": "A person looking content at their work, representing finding purpose.",
+      "imageUrl": "https://picsum.photos/seed/blog2/600/400",
+      "imageHint": "person happy work"
+    },
+    {
+      "id": "blog3",
+      "description": "A futuristic image with circuits and data streams, representing AI tools.",
+      "imageUrl": "https://picsum.photos/seed/blog3/600/400",
+      "imageHint": "AI data"
     }
   ]
 }

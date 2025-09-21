@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote, PlayCircle } from 'lucide-react';
+import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote, PlayCircle, Users, BookOpen } from 'lucide-react';
 import Logo from '@/components/logo';
 import { UserNav } from '@/components/user-nav';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -92,7 +92,43 @@ const faqs = [
         question: "Can I change my roadmap later?",
         answer: "Yes! Your career journey is dynamic, and so is your roadmap. You can re-order steps, and as you grow and your interests evolve, you can retake the assessment to generate a new, updated roadmap at any time."
     }
-]
+];
+
+const targetUsers = [
+    {
+        title: "Career Changers",
+        description: "Feeling unfulfilled in your current role? We'll help you pivot your skills and passions into a new career with confidence and a clear plan."
+    },
+    {
+        title: "Recent Graduates",
+        description: "Overwhelmed by options? We'll help you navigate the post-graduation world and find a meaningful career path that aligns with your degree and interests."
+    },
+    {
+        title: "Ambitious Professionals",
+        description: "Ready for the next step but not sure what it is? We'll help you identify growth opportunities and build a roadmap for advancement in your field."
+    }
+];
+
+const blogPosts = [
+    {
+        title: "The Art of the Career Pivot: How to Make a Change at Any Age",
+        category: "Career Growth",
+        date: "October 26, 2023",
+        imageId: "blog1"
+    },
+    {
+        title: "Beyond the Paycheck: Finding Your 'Why' in the Modern Workplace",
+        category: "Ikigai & Purpose",
+        date: "October 22, 2023",
+        imageId: "blog2"
+    },
+    {
+        title: "5 AI Tools That Can Supercharge Your Job Search in 2024",
+        category: "Future of Work",
+        date: "October 18, 2023",
+        imageId: "blog3"
+    }
+];
 
 const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
 const copilotImage = PlaceHolderImages.find((p) => p.id === 'copilot');
@@ -227,7 +263,27 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="video-walkthrough" className="py-24">
+        <section id="who-is-this-for" className="py-24">
+            <div className="container">
+                <div className="text-center mb-16">
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">Built for Every Stage of Your Career</h2>
+                    <p className="max-w-xl mx-auto text-muted-foreground mt-4">
+                        Whether you're starting out, switching paths, or aiming higher, IKI-G-AI is for you.
+                    </p>
+                </div>
+                <div className="grid md:grid-cols-3 gap-8">
+                    {targetUsers.map((user) => (
+                        <Card key={user.title} className="p-8 text-center">
+                            <Users className="w-12 h-12 text-primary mx-auto mb-4" />
+                            <h3 className="font-headline text-xl font-bold mb-2">{user.title}</h3>
+                            <p className="text-muted-foreground">{user.description}</p>
+                        </Card>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section id="video-walkthrough" className="py-24 bg-card border-y">
             <div className="container">
                 <div className="text-center mb-12">
                     <h2 className="font-headline text-3xl md:text-4xl font-bold">See IKI-G-AI in Action</h2>
@@ -246,7 +302,7 @@ export default function Home() {
             </div>
         </section>
 
-        <section className="py-24 bg-card border-y">
+        <section className="py-24">
           <div className="container grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="font-headline text-3xl md:text-4xl font-bold">Your Personal Career Co-Pilot</h2>
@@ -279,7 +335,7 @@ export default function Home() {
           </div>
         </section>
         
-        <section id="career-preview" className="py-24">
+        <section id="career-preview" className="py-24 bg-card border-y">
           <div className="container text-center">
             <h2 className="font-headline text-3xl md:text-4xl font-bold">From Assessment to Action</h2>
             <p className="max-w-xl mx-auto text-muted-foreground mt-4 mb-12">
@@ -321,6 +377,19 @@ export default function Home() {
           </div>
         </section>
 
+        <section id="featured-in" className="py-12 bg-background">
+            <div className="container">
+                <h3 className="text-center text-muted-foreground font-semibold uppercase tracking-widest mb-8">As Featured In</h3>
+                <div className="flex justify-center items-center gap-x-12 gap-y-4 flex-wrap">
+                    <span className="font-headline text-2xl text-muted-foreground/60">TechForward</span>
+                    <span className="font-headline text-2xl text-muted-foreground/60">CareerWeekly</span>
+                    <span className="font-headline text-2xl text-muted-foreground/60">AI Innovators</span>
+                    <span className="font-headline text-2xl text-muted-foreground/60">Purpose Mag</span>
+                    <span className="font-headline text-2xl text-muted-foreground/60">NextGen</span>
+                </div>
+            </div>
+        </section>
+
         <section id="testimonials" className="py-24 bg-card border-y">
             <div className="container">
                 <div className="text-center mb-16">
@@ -357,7 +426,43 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="faq" className="py-24">
+        <section id="blog" className="py-24">
+            <div className="container">
+                <div className="text-center mb-16">
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">From the IKI-G-AI Blog</h2>
+                     <p className="max-w-xl mx-auto text-muted-foreground mt-4">
+                        Actionable advice and insights on career, purpose, and the future of work.
+                    </p>
+                </div>
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {blogPosts.map((post) => {
+                         const image = PlaceHolderImages.find((p) => p.id === post.imageId);
+                        return (
+                            <Card key={post.title} className="overflow-hidden group">
+                                <Link href="#" className="block">
+                                    <div className="relative aspect-video">
+                                        {image && (
+                                            <Image src={image.imageUrl} alt={post.title} fill className="object-cover transition-transform duration-300 group-hover:scale-105" data-ai-hint={image.imageHint} />
+                                        )}
+                                    </div>
+                                    <CardHeader>
+                                        <p className="text-sm text-primary font-semibold">{post.category}</p>
+                                        <CardTitle className="font-headline text-xl leading-tight group-hover:text-primary transition-colors">{post.title}</CardTitle>
+                                    </CardHeader>
+                                </Link>
+                            </Card>
+                        );
+                    })}
+                </div>
+                <div className="text-center mt-12">
+                    <Button variant="outline">
+                        Read More on Our Blog <ArrowRight className="ml-2" />
+                    </Button>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" className="py-24 bg-card border-y">
           <div className="container max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="font-headline text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
