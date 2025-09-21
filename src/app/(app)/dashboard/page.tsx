@@ -1,31 +1,38 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Compass, Bot, Network, Award, Sparkles, CheckCircle } from 'lucide-react';
+import { ArrowRight, Award, CheckCircle, Code, Calendar, ListChecks, Users, Sparkles, Route } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
 
 const features = [
   {
-    icon: <Compass className="w-8 h-8 mb-4 text-primary" />,
-    title: 'Start Your Assessment',
-    description: 'Discover your strengths, passions, and what the world needs from you.',
-    href: '/assessment',
-    cta: 'Begin Assessment',
+    icon: <Route className="w-8 h-8 mb-4 text-primary" />,
+    title: 'Career Paths',
+    description: 'Explore pre-defined roadmaps for various tech careers and track your progress.',
+    href: '/career-paths',
+    cta: 'Explore Paths',
   },
   {
-    icon: <Network className="w-8 h-8 mb-4 text-primary" />,
-    title: 'View Your Roadmap',
-    description: 'Explore your AI-generated career path and customize your journey.',
-    href: '/roadmap',
-    cta: 'See My Roadmap',
+    icon: <Calendar className="w-8 h-8 mb-4 text-primary" />,
+    title: 'Contest Calendar',
+    description: 'Stay updated with upcoming coding contests from top competitive programming platforms.',
+    href: '/contest-calendar',
+    cta: 'View Calendar',
   },
   {
-    icon: <Bot className="w-8 h-8 mb-4 text-primary" />,
-    title: 'Chat with AI Counselor',
-    description: 'Get personalized advice and answers to your career questions, anytime.',
-    href: '/chat',
-    cta: 'Start Chatting',
+    icon: <ListChecks className="w-8 h-8 mb-4 text-primary" />,
+    title: 'Daily Tracker',
+    description: 'Manage your daily tasks, set goals, and monitor your progress efficiently.',
+    href: '/daily-tracker',
+    cta: 'Track Today',
+  },
+   {
+    icon: <Users className="w-8 h-8 mb-4 text-primary" />,
+    title: 'Community Forum',
+    description: 'Connect with peers, ask questions, and share your knowledge with the community.',
+    href: '/forum',
+    cta: 'Join Discussion',
   },
 ];
 
@@ -72,13 +79,13 @@ export default function DashboardPage() {
   return (
     <div className="container py-10">
       <h1 className="font-headline text-3xl md:text-4xl font-bold tracking-tight">
-        Welcome to your Ikigai
+        Welcome to your Career Hub
       </h1>
       <p className="text-lg text-muted-foreground mt-2">
         This is your control center for navigating your professional journey.
       </p>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-8">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8">
         {features.map((feature) => (
           <Card key={feature.title} className="flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
             <CardHeader>
@@ -123,13 +130,13 @@ export default function DashboardPage() {
       <Card className="mt-10 bg-accent/10 border-accent/20">
         <CardHeader className="grid md:grid-cols-[1fr_auto] items-center gap-6">
           <div>
-            <CardTitle className="font-headline text-2xl text-accent-foreground">Ready to find your Ikigai?</CardTitle>
+            <CardTitle className="font-headline text-2xl text-accent-foreground">Ready to accelerate your career?</CardTitle>
             <CardDescription className="mt-2 text-base text-accent-foreground/80">
-              The first step is a deep dive into what makes you unique. Our assessment is designed to be insightful and thought-provoking.
+              Pick a career path, join a coding contest, or start tracking your daily progress.
             </CardDescription>
           </div>
           <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-            <Link href="/assessment">Start the Ikigai Assessment</Link>
+            <Link href="/career-paths">Explore Career Paths</Link>
           </Button>
         </CardHeader>
       </Card>

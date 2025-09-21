@@ -7,8 +7,10 @@ import { NavigationMenu, NavigationMenuItem, NavigationMenuList, NavigationMenuL
 
 const navItems = [
     { name: 'Dashboard', href: '/dashboard' },
-    { name: 'Assessment', href: '/assessment' },
-    { name: 'My Roadmap', href: '/roadmap' },
+    { name: 'Career Paths', href: '/career-paths' },
+    { name: 'Contest Calendar', href: '/contest-calendar' },
+    { name: 'Daily Tracker', href: '/daily-tracker' },
+    { name: 'Forum', href: '/forum' },
     { name: 'AI Counselor', href: '/chat' },
 ]
 
