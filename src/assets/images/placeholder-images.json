@@ -17,19 +17,19 @@
       "id": "feature1",
       "description": "A person looking thoughtful while working on a complex problem, representing the assessment phase.",
       "imageUrl": "https://storage.googleapis.com/project-avastar/a953e5e4-23a4-433d-881a-8227c8fb4049.png",
-      "imageHint": "person thinking"
+      "imageHint": "thoughtful assessment"
     },
     {
       "id": "feature2",
       "description": "A futuristic holographic interface displaying charts and data, representing AI recommendations.",
       "imageUrl": "https://storage.googleapis.com/project-avastar/c6395b36-31de-4418-97a2-9133a80258a1.png",
-      "imageHint": "futuristic interface"
+      "imageHint": "AI interface"
     },
     {
       "id": "feature3",
       "description": "Two characters adjusting a career plan on a large tablet, symbolizing a dynamic roadmap.",
       "imageUrl": "https://storage.googleapis.com/project-avastar/9ab9957c-f236-402a-a92c-63b1e3e7f185.png",
-      "imageHint": "career planning"
+      "imageHint": "collaborative planning"
     },
     {
       "id": "copilot",
