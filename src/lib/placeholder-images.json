@@ -36,6 +36,24 @@
       "description": "A person working on a laptop in a modern, bright environment, representing the career co-pilot feature.",
       "imageUrl": "https://picsum.photos/seed/copilot/600/600",
       "imageHint": "woman working laptop"
+    },
+    {
+      "id": "testimonial1",
+      "description": "Avatar for Sarah L.",
+      "imageUrl": "https://picsum.photos/seed/testimonial1/100/100",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "testimonial2",
+      "description": "Avatar for Michael B.",
+      "imageUrl": "https://picsum.photos/seed/testimonial2/100/100",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "testimonial3",
+      "description": "Avatar for Jessica Y.",
+      "imageUrl": "https://picsum.photos/seed/testimonial3/100/100",
+      "imageHint": "person professional"
     }
   ]
 }

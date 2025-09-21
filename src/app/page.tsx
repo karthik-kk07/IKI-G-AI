@@ -2,10 +2,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Compass, Bot, Network, ArrowRight } from 'lucide-react';
+import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote } from 'lucide-react';
 import Logo from '@/components/logo';
 import { UserNav } from '@/components/user-nav';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const features = [
   {
@@ -27,6 +28,46 @@ const features = [
     imageId: 'feature3',
   },
 ];
+
+const howItWorksSteps = [
+    {
+        icon: <ClipboardList className="w-10 h-10 text-primary" />,
+        title: "1. Take the Assessment",
+        description: "Answer a series of thought-provoking questions to uncover your unique passions, strengths, and motivations."
+    },
+    {
+        icon: <Route className="w-10 h-10 text-primary" />,
+        title: "2. Generate Your Roadmap",
+        description: "Our AI analyzes your results to create a personalized career roadmap with actionable steps and milestones."
+    },
+    {
+        icon: <MessageSquare className="w-10 h-10 text-primary" />,
+        title: "3. Chat with Your Counselor",
+        description: "Refine your path and get answers to your questions with Kai, your personal AI career counselor."
+    }
+];
+
+const testimonials = [
+    {
+        name: "Sarah L.",
+        role: "Career Changer",
+        quote: "IKI-G-AI gave me the clarity I was desperately looking for. The roadmap wasn't just a list of jobs; it was a genuine reflection of who I am. I finally feel confident in my career change.",
+        avatarId: "testimonial1"
+    },
+    {
+        name: "Michael B.",
+        role: "Recent Graduate",
+        quote: "As a recent grad, the job market felt overwhelming. This platform helped me connect my degree to a mission I care about. The AI counselor was surprisingly insightful for interview prep!",
+        avatarId: "testimonial2"
+    },
+    {
+        name: "Jessica Y.",
+        role: "Product Manager",
+        quote: "I was feeling stuck in my career. The Ikigai assessment helped me rediscover what I love, and the AI showed me how to pivot within my own company. It's been a game-changer.",
+        avatarId: "testimonial3"
+    }
+];
+
 
 const heroImage = PlaceHolderImages.find((p) => p.id === 'hero');
 const copilotImage = PlaceHolderImages.find((p) => p.id === 'copilot');
@@ -104,7 +145,29 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="py-24">
+        <section id="how-it-works" className="py-24">
+            <div className="container">
+                <div className="text-center mb-16">
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">Your Journey to Purpose in 3 Simple Steps</h2>
+                    <p className="max-w-xl mx-auto text-muted-foreground mt-4">
+                        We've streamlined the path to discovering and acting on your Ikigai.
+                    </p>
+                </div>
+                <div className="grid md:grid-cols-3 gap-8 text-center">
+                    {howItWorksSteps.map((step) => (
+                        <div key={step.title} className="flex flex-col items-center">
+                            <div className="flex items-center justify-center h-20 w-20 rounded-full bg-primary/10 mb-6">
+                                {step.icon}
+                            </div>
+                            <h3 className="font-headline text-xl font-bold mb-2">{step.title}</h3>
+                            <p className="text-muted-foreground">{step.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section className="py-24 bg-card border-y">
           <div className="container grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="font-headline text-3xl md:text-4xl font-bold">Your Personal Career Co-Pilot</h2>
@@ -136,6 +199,43 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section id="testimonials" className="py-24">
+            <div className="container">
+                <div className="text-center mb-16">
+                    <h2 className="font-headline text-3xl md:text-4xl font-bold">Loved by Professionals and Dreamers</h2>
+                     <p className="max-w-xl mx-auto text-muted-foreground mt-4">
+                        See how IKI-G-AI has helped others find their path.
+                    </p>
+                </div>
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {testimonials.map((testimonial) => {
+                        const image = PlaceHolderImages.find((p) => p.id === testimonial.avatarId);
+                        return (
+                            <Card key={testimonial.name} className="flex flex-col justify-between p-6">
+                                <CardContent className="p-0">
+                                  <Quote className="w-8 h-8 text-primary/20 mb-4" />
+                                  <p className="text-muted-foreground mb-6">{testimonial.quote}</p>
+                                </CardContent>
+                                <div className="flex items-center gap-4">
+                                    {image && (
+                                        <Avatar>
+                                            <AvatarImage src={image.imageUrl} alt={testimonial.name} data-ai-hint={image.imageHint} />
+                                            <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                                        </Avatar>
+                                    )}
+                                    <div>
+                                        <p className="font-semibold text-foreground">{testimonial.name}</p>
+                                        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
+                                    </div>
+                                </div>
+                            </Card>
+                        );
+                    })}
+                </div>
+            </div>
+        </section>
+
       </main>
       <footer className="border-t bg-card">
         <div className="container py-6 text-center text-muted-foreground text-sm">
