@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Compass, Bot, Network } from 'lucide-react';
+import { CheckCircle, Compass, Bot, Network, ArrowRight } from 'lucide-react';
 import Logo from '@/components/logo';
 import { UserNav } from '@/components/user-nav';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -61,7 +61,7 @@ export default function Home() {
               Find Your Purpose. Build Your Future.
             </div>
             <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-foreground">
-              Navigate Your Career with <span className="text-primary">Ikigai</span>
+              Navigate Your Career with <span className="text-primary">IKI-G-AI</span>
             </h1>
             <p className="max-w-2xl mx-auto text-lg text-foreground/80 mb-8">
               IKI-G-AI helps you discover your life's purpose and translates it into a personalized, AI-driven career roadmap.
@@ -125,6 +125,9 @@ export default function Home() {
                   <span><strong className="text-foreground">Readiness Checklist:</strong> Track the skills and credentials you need to be job-ready.</span>
                 </li>
               </ul>
+               <Button asChild size="lg" className="mt-8">
+                <Link href="/dashboard">Explore Your Dashboard <ArrowRight className="ml-2" /></Link>
+              </Button>
             </div>
             <div className="relative aspect-square rounded-xl overflow-hidden shadow-2xl">
               {copilotImage && (
