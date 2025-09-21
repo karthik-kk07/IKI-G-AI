@@ -23,10 +23,30 @@ const ikigaiSchema = z.object({
 type IkigaiFormData = z.infer<typeof ikigaiSchema>;
 
 const steps = [
-  { id: 'love', title: 'What You Love', description: 'List activities, subjects, or ideas you are passionate about. What could you do for hours without getting bored?', label: 'I love...' },
-  { id: 'goodAt', title: 'What You Are Good At', description: 'What skills have you developed? What do people come to you for help with? Think about both hard and soft skills.', label: 'I am good at...' },
-  { id: 'worldNeeds', title: 'What The World Needs', description: 'What problems do you want to solve? What causes do you care about? How do you want to contribute to society?', label: 'The world needs...' },
-  { id: 'paidFor', title: 'What You Can Be Paid For', description: 'What skills or services are in demand? What kind of work environment do you prefer? What are your financial goals?', label: 'I can be paid for...' },
+  { 
+    id: 'love', 
+    title: '💖 What You Love (Passion)', 
+    description: 'What activities or topics make you lose all sense of time?\nWhat did you love to do as a child or a teenager?\nWhat subjects or books do you find yourself constantly reading or researching?\nIf money were no object, how would you spend your time?', 
+    label: 'I love...' 
+  },
+  { 
+    id: 'goodAt', 
+    title: '🧠 What You Are Good At (Vocation)', 
+    description: 'What skills or abilities come naturally to you?\nWhat do people consistently ask you for help with or advice on?\nWhat are you an expert at, even if it\'s a niche topic?\nThink about a time you solved a problem that others found difficult. What skills did you use?', 
+    label: 'I am good at...' 
+  },
+  { 
+    id: 'worldNeeds', 
+    title: '🌎 What the World Needs (Mission)', 
+    description: 'What problems or injustices in the world frustrate you the most?\nIf you had a superpower to change one thing about your community or the world, what would it be?\nWhat issues are you passionate about helping to solve?\nWhat kind of positive impact do you want to leave on the world?', 
+    label: 'The world needs...' 
+  },
+  { 
+    id: 'paidFor', 
+    title: '💰 What You Can Be Paid For (Profession)', 
+    description: 'What services or products could you offer that people would be willing to pay for?\nWhat is a desirable skill in your field or a field you\'re interested in?\nWhat jobs or careers align with your skills and offer a sustainable living?\nWhat kind of lifestyle do you want to have, and what kind of work can support that?', 
+    label: 'I can be paid for...' 
+  },
 ];
 
 export default function AssessmentPage() {
@@ -85,9 +105,9 @@ export default function AssessmentPage() {
         <CardHeader>
           <Progress value={((currentStep + 1) / steps.length) * 100} className="mb-4" />
           <CardTitle className="font-headline text-2xl">
-            Step {currentStep + 1}: {steps[currentStep].title}
+             {steps[currentStep].title}
           </CardTitle>
-          <CardDescription>{steps[currentStep].description}</CardDescription>
+          <CardDescription className="whitespace-pre-line">{steps[currentStep].description}</CardDescription>
         </CardHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(processStep)}>
