@@ -204,7 +204,7 @@ export default function Home() {
               {features.map((feature) => {
                 const image = PlaceHolderImages.find((p) => p.id === feature.imageId);
                 return (
-                  <Card key={feature.title} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <Card key={feature.title} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
                     <CardHeader className="flex flex-row items-center gap-4 p-6">
                       {feature.icon}
                       <CardTitle className="font-headline m-0">{feature.title}</CardTitle>
@@ -251,13 +251,13 @@ export default function Home() {
                 </div>
                 <div className="grid md:grid-cols-3 gap-8 text-center">
                     {howItWorksSteps.map((step) => (
-                        <div key={step.title} className="flex flex-col items-center">
+                         <Card key={step.title} className="p-8 flex flex-col items-center transform hover:-translate-y-2 transition-transform duration-300">
                             <div className="flex items-center justify-center h-20 w-20 rounded-full bg-primary/10 mb-6">
                                 {step.icon}
                             </div>
                             <h3 className="font-headline text-xl font-bold mb-2">{step.title}</h3>
                             <p className="text-muted-foreground">{step.description}</p>
-                        </div>
+                        </Card>
                     ))}
                 </div>
             </div>
@@ -273,7 +273,7 @@ export default function Home() {
                 </div>
                 <div className="grid md:grid-cols-3 gap-8">
                     {targetUsers.map((user) => (
-                        <Card key={user.title} className="p-8 text-center">
+                        <Card key={user.title} className="p-8 text-center transform hover:-translate-y-2 transition-transform duration-300">
                             <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                             <h3 className="font-headline text-xl font-bold mb-2">{user.title}</h3>
                             <p className="text-muted-foreground">{user.description}</p>
@@ -402,7 +402,7 @@ export default function Home() {
                     {testimonials.map((testimonial) => {
                         const image = PlaceHolderImages.find((p) => p.id === testimonial.avatarId);
                         return (
-                            <Card key={testimonial.name} className="flex flex-col justify-between p-6">
+                            <Card key={testimonial.name} className="flex flex-col justify-between p-6 transform hover:-translate-y-2 transition-transform duration-300">
                                 <CardContent className="p-0">
                                   <Quote className="w-8 h-8 text-primary/20 mb-4" />
                                   <p className="text-muted-foreground mb-6">{testimonial.quote}</p>
@@ -438,7 +438,7 @@ export default function Home() {
                     {blogPosts.map((post) => {
                          const image = PlaceHolderImages.find((p) => p.id === post.imageId);
                         return (
-                            <Card key={post.title} className="overflow-hidden group">
+                            <Card key={post.title} className="overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300">
                                 <Link href="#" className="block">
                                     <div className="relative aspect-video">
                                         {image && (
