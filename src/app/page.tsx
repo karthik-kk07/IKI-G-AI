@@ -271,49 +271,62 @@ export default function Home() {
                  <style>
                   {`
                   @keyframes pulse {
-                    0%, 100% { r: 2; opacity: 0.8; }
-                    50% { r: 4; opacity: 1; }
+                    0%, 100% { transform: scale(1); opacity: 0.8; }
+                    50% { transform: scale(1.5); opacity: 1; }
                   }
                   @keyframes move {
                     0% { transform: translate(0, 0); }
-                    25% { transform: translate(5px, 10px); }
-                    50% { transform: translate(-5px, -10px); }
-                    75% { transform: translate(10px, -5px); }
+                    25% { transform: translate(calc(var(--x-jitter) * 1px), calc(var(--y-jitter) * 1px)); }
+                    50% { transform: translate(calc(var(--x-jitter) * -1px), calc(var(--y-jitter) * -1px)); }
+                    75% { transform: translate(calc(var(--x-jitter) * 0.5px), calc(var(--y-jitter) * -0.5px)); }
                     100% { transform: translate(0, 0); }
                   }
                   .node {
-                    animation: pulse 4s infinite ease-in-out, move 20s infinite ease-in-out;
+                    animation: pulse 6s infinite ease-in-out, move 30s infinite ease-in-out;
                   }
-                  .node:nth-child(2) { animation-delay: -1s; }
-                  .node:nth-child(3) { animation-delay: -2s; }
-                  .node:nth-child(4) { animation-delay: -3s; }
-                  .node:nth-child(5) { animation-delay: -4s; }
-                  .node:nth-child(6) { animation-delay: -5s; }
+                  .node:nth-child(2) { animation-delay: -1.5s; animation-duration: 7s; }
+                  .node:nth-child(3) { animation-delay: -3s; animation-duration: 8s; }
+                  .node:nth-child(4) { animation-delay: -4.5s; animation-duration: 9s; }
+                  .node:nth-child(5) { animation-delay: -6s; animation-duration: 10s; }
+                  .node:nth-child(6) { animation-delay: -7.5s; animation-duration: 11s; }
                   .line {
                     stroke-dasharray: 1000;
                     stroke-dashoffset: 1000;
                     animation: dash 30s linear forwards;
-                    opacity: 0.15;
+                    opacity: 0.2;
                   }
-                  @keyframes dash { to { stroke-dashoffset: 0; } }
+                  @keyframes dash { 
+                    to { stroke-dashoffset: 0; } 
+                  }
+                  .line-group {
+                     animation: dash-fade 40s infinite;
+                  }
+                   @keyframes dash-fade {
+                    0%, 100% { opacity: 0; }
+                    10%, 90% { opacity: 0.2; }
+                   }
                   `}
                 </style>
               </defs>
               <rect width="100%" height="100%" fill="url(#grad1)" />
-              <g stroke="hsl(var(--primary))" strokeWidth="0.5">
-                  <line className="line" x1="10%" y1="20%" x2="90%" y2="80%" />
-                  <line className="line" x1="30%" y1="90%" x2="70%" y2="10%" />
-                  <line className="line" x1="50%" y1="50%" x2="10%" y2="90%" />
-                   <line className="line" x1="50%" y1="50%" x2="90%" y2="10%" />
+              <g className="line-group" stroke="hsl(var(--primary))" strokeWidth="0.5">
+                  <line className="line" x1="10%" y1="20%" x2="90%" y2="80%" style={{ animationDelay: '0s' }} />
+                  <line className="line" x1="30%" y1="90%" x2="70%" y2="10%" style={{ animationDelay: '2s' }} />
+                  <line className="line" x1="50%" y1="50%" x2="10%" y2="90%" style={{ animationDelay: '4s' }} />
+                  <line className="line" x1="50%" y1="50%" x2="90%" y2="10%" style={{ animationDelay: '6s' }} />
+                  <line className="line" x1="20%" y1="70%" x2="80%" y2="30%" style={{ animationDelay: '8s' }} />
+                  <line className="line" x1="40%" y1="15%" x2="60%" y2="85%" style={{ animationDelay: '10s' }} />
               </g>
               <g fill="hsl(var(--primary))">
-                <circle className="node" cx="10%" cy="20%" r="3" />
-                <circle className="node" cx="90%" cy="80%" r="3" />
-                <circle className="node" cx="30%" cy="90%" r="3" />
-                <circle className="node" cx="70%" cy="10%" r="3" />
-                <circle className="node" cx="50%" cy="50%" r="3" />
-                 <circle className="node" cx="20%" cy="70%" r="2" />
-                 <circle className="node" cx="80%" cy="30%" r="2" />
+                <circle className="node" cx="10%" cy="20%" r="3" style={{ '--x-jitter': 5, '--y-jitter': 8 } as React.CSSProperties} />
+                <circle className="node" cx="90%" cy="80%" r="3" style={{ '--x-jitter': -6, '--y-jitter': 4 } as React.CSSProperties} />
+                <circle className="node" cx="30%" cy="90%" r="3" style={{ '--x-jitter': 8, '--y-jitter': -3 } as React.CSSProperties} />
+                <circle className="node" cx="70%" cy="10%" r="3" style={{ '--x-jitter': -4, '--y-jitter': -6 } as React.CSSProperties} />
+                <circle className="node" cx="50%" cy="50%" r="4" style={{ '--x-jitter': 7, '--y-jitter': 7 } as React.CSSProperties} />
+                <circle className="node" cx="20%" cy="70%" r="2" style={{ '--x-jitter': -3, '--y-jitter': 5 } as React.CSSProperties} />
+                <circle className="node" cx="80%" cy="30%" r="2" style={{ '--x-jitter': 6, '--y-jitter': -8 } as React.CSSProperties} />
+                <circle className="node" cx="40%" cy="15%" r="2" style={{ '--x-jitter': 4, '--y-jitter': 4 } as React.CSSProperties} />
+                <circle className="node" cx="60%" cy="85%" r="2" style={{ '--x-jitter': -8, '--y-jitter': -2 } as React.CSSProperties} />
               </g>
             </svg>
           </div>
