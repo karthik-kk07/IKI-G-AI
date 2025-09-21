@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Compass, Bot, Network, MessageSquare } from 'lucide-react';
+import { ArrowRight, Compass, Bot, Network, Award, Sparkles, CheckCircle } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+
 
 const features = [
   {
@@ -26,6 +28,45 @@ const features = [
     cta: 'Start Chatting',
   },
 ];
+
+const achievements = [
+    {
+        icon: <CheckCircle className="w-10 h-10 text-green-500" />,
+        title: "Assessment Complete",
+        description: "You've taken the first step on your journey of self-discovery.",
+        unlocked: true,
+    },
+    {
+        icon: <Sparkles className="w-10 h-10 text-purple-500" />,
+        title: "Roadmap Generated",
+        description: "Your personalized career path has been created by the AI.",
+        unlocked: true,
+    },
+    {
+        icon: <Award className="w-10 h-10 text-yellow-500" />,
+        title: "Creative Thinker",
+        description: "Awarded for demonstrating strong creative skills.",
+        unlocked: true,
+    },
+    {
+        icon: <Award className="w-10 h-10 text-muted-foreground/30" />,
+        title: "Team Leader",
+        description: "Demonstrate leadership potential in your assessments.",
+        unlocked: false,
+    },
+     {
+        icon: <Award className="w-10 h-10 text-muted-foreground/30" />,
+        title: "Problem Solver",
+        description: "Excel at finding innovative solutions to challenges.",
+        unlocked: false,
+    },
+    {
+        icon: <Award className="w-10 h-10 text-muted-foreground/30" />,
+        title: "Digital Nomad",
+        description: "Unlock a career path that allows for remote work and travel.",
+        unlocked: false,
+    }
+]
 
 export default function DashboardPage() {
   return (
@@ -55,6 +96,29 @@ export default function DashboardPage() {
           </Card>
         ))}
       </div>
+
+       <Card className="mt-10">
+        <CardHeader>
+          <CardTitle className="font-headline text-2xl">My Achievements</CardTitle>
+          <CardDescription>
+            Visual milestones on your career journey. Unlock more as you progress!
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {achievements.map((ach) => (
+            <Card key={ach.title} className={`p-4 text-center flex flex-col items-center justify-start ${!ach.unlocked ? 'opacity-50' : ''}`}>
+               {ach.icon}
+               <h3 className="font-semibold mt-3 text-base">{ach.title}</h3>
+               <p className="text-xs text-muted-foreground mt-1 mb-3 flex-grow">{ach.description}</p>
+                {ach.unlocked ? (
+                    <Badge variant="default" className="bg-green-100 text-green-800 border-green-200">Unlocked</Badge>
+                ) : (
+                    <Badge variant="outline">Locked</Badge>
+                )}
+            </Card>
+          ))}
+        </CardContent>
+       </Card>
 
       <Card className="mt-10 bg-accent/10 border-accent/20">
         <CardHeader className="grid md:grid-cols-[1fr_auto] items-center gap-6">
