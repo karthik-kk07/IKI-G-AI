@@ -178,7 +178,7 @@ export default function Home() {
           )}
           <div className="absolute inset-0 bg-background/60 backdrop-blur-sm" />
           <div className="container relative text-center">
-            <div className="bg-accent/30 text-accent-foreground rounded-full px-4 py-1.5 text-sm font-medium bg-purple-500/20 text-purple-800 dark:text-purple-200 inline-block mb-4">
+            <div className="bg-primary/10 text-primary rounded-full px-4 py-1.5 text-sm font-medium inline-block mb-4 border border-primary/20">
               Find Your Purpose. Build Your Future.
             </div>
             <h1 className="font-headline text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-foreground">
@@ -188,7 +188,7 @@ export default function Home() {
              Discover your life's purpose and translate it into a personalized, AI-driven career roadmap.
             </p>
             <div className="max-w-xl mx-auto">
-              <form className="flex flex-col sm:flex-row gap-4" onSubmit={(e) => { e.preventDefault(); router.push('/dashboard'); }}>
+              <form className="flex flex-col sm:flex-row gap-4" onSubmit={(e) => { e.preventDefault(); router.push('/login'); }}>
                   <Input 
                       type="text" 
                       placeholder="Tell us one thing you're passionate about..." 
@@ -457,7 +457,7 @@ export default function Home() {
                                         )}
                                     </div>
                                     <CardHeader>
-                                        <p className="text-sm text-primary font-semibold">{post.category}</p>
+                                        <p className="text-sm text-primary font-semibold bg-primary/10 rounded-full px-3 py-1 self-start">{post.category}</p>
                                         <CardTitle className="font-headline text-xl leading-tight group-hover:text-primary transition-colors">{post.title}</CardTitle>
                                     </CardHeader>
                                 </Link>
@@ -525,3 +525,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
