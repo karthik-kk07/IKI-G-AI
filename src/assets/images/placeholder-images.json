@@ -4,7 +4,7 @@
     {
       "id": "hero",
       "description": "A vector illustration of a person looking at a path leading to a bright future, symbolizing a new beginning.",
-      "imageUrl": "https://picsum.photos/seed/hero-vector/1200/800",
+      "imageUrl": "https://picsum.photos/seed/career-journey-vector/1200/800",
       "imageHint": "career journey vector"
     },
     {
@@ -16,37 +16,37 @@
     {
       "id": "features",
       "description": "A vector illustration of a person interacting with a futuristic interface to plan their career path.",
-      "imageUrl": "https://picsum.photos/seed/features-vector/600/600",
+      "imageUrl": "https://picsum.photos/seed/career-planning-interface/600/600",
       "imageHint": "career planning interface"
     },
     {
       "id": "feature1",
       "description": "A vector illustration of a person looking thoughtful while working on a complex problem, representing the assessment phase.",
-      "imageUrl": "https://picsum.photos/seed/feature1-vector/600/400",
+      "imageUrl": "https://picsum.photos/seed/thoughtful-assessment-vector/600/400",
       "imageHint": "thoughtful assessment vector"
     },
     {
       "id": "feature2",
       "description": "A vector illustration of a futuristic holographic interface displaying charts and data, representing AI recommendations.",
-      "imageUrl": "https://picsum.photos/seed/feature2-vector/600/400",
+      "imageUrl": "https://picsum.photos/seed/ai-interface-vector/600/400",
       "imageHint": "AI interface vector"
     },
     {
       "id": "feature3",
       "description": "A vector illustration of two characters adjusting a career plan on a large tablet, symbolizing a dynamic roadmap.",
-      "imageUrl": "https://picsum.photos/seed/feature3-vector/600/400",
+      "imageUrl": "https://picsum.photos/seed/collaborative-planning-vector/600/400",
       "imageHint": "collaborative planning vector"
     },
     {
       "id": "copilot",
       "description": "A vector illustration of a person working on a laptop in a modern, bright environment, representing the career co-pilot feature.",
-      "imageUrl": "https://picsum.photos/seed/copilot-vector/600/600",
+      "imageUrl": "https://picsum.photos/seed/woman-working-vector/600/600",
       "imageHint": "woman working vector"
     },
     {
       "id": "testimonial1",
       "description": "Avatar for Sarah L.",
-      "imageUrl": "https://picsum.photos/seed/woman-portrait/100/100",
+      "imageUrl": "https://picsum.photos/seed/woman-smiling/100/100",
       "imageHint": "woman smiling"
     },
     {
@@ -64,37 +64,37 @@
     {
       "id": "why-ikigai",
       "description": "Four overlapping circles representing the ikigai concept in a clean vector style.",
-      "imageUrl": "https://picsum.photos/seed/ikigai-vector/600/600",
+      "imageUrl": "https://picsum.photos/seed/ikigai-diagram-vector/600/600",
       "imageHint": "ikigai diagram vector"
     },
     {
       "id": "video-thumbnail",
       "description": "A vector graphic thumbnail for a video walkthrough of the app.",
-      "imageUrl": "https://picsum.photos/seed/video-thumb-vector/1280/720",
+      "imageUrl": "https://picsum.photos/seed/tech-background-vector/1280/720",
       "imageHint": "tech background vector"
     },
     {
       "id": "career-preview",
       "description": "A vector illustration of a professional working in their new career as a UI/UX Designer.",
-      "imageUrl": "https://picsum.photos/seed/career-preview-vector/600/400",
+      "imageUrl": "https://picsum.photos/seed/graphic-designer-vector/600/400",
       "imageHint": "graphic designer vector"
     },
     {
       "id": "blog1",
       "description": "A vector illustration representing career transition and growth.",
-      "imageUrl": "https://picsum.photos/seed/blog1-vector/600/400",
+      "imageUrl": "https://picsum.photos/seed/career-path-vector/600/400",
       "imageHint": "career path vector"
     },
     {
       "id": "blog2",
       "description": "A vector illustration of a person looking content at their work, representing finding purpose.",
-      "imageUrl": "https://picsum.photos/seed/blog2-vector/600/400",
+      "imageUrl": "https://picsum.photos/seed/purposeful-work-vector/600/400",
       "imageHint": "purposeful work vector"
     },
     {
       "id": "blog3",
       "description": "A futuristic vector illustration with circuits and data streams, representing AI tools.",
-      "imageUrl": "https://picsum.photos/seed/blog3-vector/600/400",
+      "imageUrl": "https://picsum.photos/seed/ai-technology-vector/600/400",
       "imageHint": "AI technology vector"
     }
   ]
