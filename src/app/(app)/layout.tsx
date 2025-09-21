@@ -34,11 +34,11 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <NavigationMenuList>
                     {navItems.map(item => (
                         <NavigationMenuItem key={item.href}>
-                            <Link href={item.href} passHref>
-                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                            <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                <Link href={item.href}>
                                     {item.name}
-                                </NavigationMenuLink>
-                            </Link>
+                                </Link>
+                            </NavigationMenuLink>
                         </NavigationMenuItem>
                     ))}
                 </NavigationMenuList>

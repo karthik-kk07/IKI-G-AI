@@ -224,11 +224,11 @@ export default function Home() {
                  </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                 <Link href="#testimonials" passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                 <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link href="#testimonials">
                     Testimonials
-                  </NavigationMenuLink>
-                </Link>
+                  </Link>
+                </NavigationMenuLink>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
