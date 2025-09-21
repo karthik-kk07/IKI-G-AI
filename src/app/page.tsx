@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote, PlayCircle, Users, BookOpen } from 'lucide-react';
@@ -140,6 +141,7 @@ const careerPreviewImage = PlaceHolderImages.find((p) => p.id === 'career-previe
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -185,11 +187,21 @@ export default function Home() {
               Navigate Your Career with <span className="text-primary">IKI-G-AI</span>
             </h1>
             <p className="max-w-2xl mx-auto text-lg text-foreground/80 mb-8">
-              Discover your life's purpose and translate it into a personalized, AI-driven career roadmap.
+             Discover your life's purpose and translate it into a personalized, AI-driven career roadmap.
             </p>
-            <Button asChild size="lg">
-              <Link href="/dashboard">Get Started Now</Link>
-            </Button>
+            <div className="max-w-xl mx-auto">
+              <form className="flex flex-col sm:flex-row gap-4" onSubmit={(e) => { e.preventDefault(); router.push('/dashboard'); }}>
+                  <Input 
+                      type="text" 
+                      placeholder="Tell us one thing you're passionate about..." 
+                      className="flex-1 text-lg py-6"
+                      aria-label="Your passion"
+                  />
+                  <Button type="submit" size="lg" className="text-lg py-6">
+                      Start My Journey <ArrowRight className="ml-2" />
+                  </Button>
+              </form>
+            </div>
           </div>
         </section>
 
@@ -201,38 +213,27 @@ export default function Home() {
                 Our platform integrates self-discovery with AI precision to guide you on a fulfilling professional journey.
               </p>
             </div>
-            <Tabs defaultValue={features[0].title} className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-8">
-                {features.map((feature) => (
-                  <TabsTrigger key={feature.title} value={feature.title} className="text-base py-2.5">
-                    {feature.title}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-              {features.map((feature) => {
+            <div className="grid md:grid-cols-1 gap-16">
+              {features.map((feature, index) => {
                 const image = PlaceHolderImages.find((p) => p.id === feature.imageId);
                 return (
-                  <TabsContent key={feature.title} value={feature.title}>
-                    <Card className="overflow-hidden">
-                      <div className="grid md:grid-cols-2">
-                        <div className="p-8">
-                           <div className="flex items-center gap-4 mb-4">
-                                {feature.icon}
-                                <h3 className="font-headline text-2xl font-bold">{feature.title}</h3>
-                           </div>
-                           <p className="text-muted-foreground text-lg">{feature.description}</p>
-                        </div>
-                        <div className="relative min-h-[300px]">
-                          {image && (
-                            <Image src={image.imageUrl} alt={feature.title} fill className="object-cover" data-ai-hint={image.imageHint} />
-                          )}
-                        </div>
+                  <div key={feature.title} className="grid md:grid-cols-2 items-center gap-12">
+                    <div className={index % 2 === 0 ? "md:order-2" : ""}>
+                      <div className="flex items-center gap-4 mb-4">
+                          {feature.icon}
+                          <h3 className="font-headline text-2xl font-bold">{feature.title}</h3>
                       </div>
-                    </Card>
-                  </TabsContent>
+                      <p className="text-muted-foreground text-lg">{feature.description}</p>
+                    </div>
+                    <div className="relative min-h-[300px] rounded-lg overflow-hidden shadow-xl">
+                      {image && (
+                        <Image src={image.imageUrl} alt={feature.title} fill className="object-cover" data-ai-hint={image.imageHint} />
+                      )}
+                    </div>
+                  </div>
                 );
               })}
-            </Tabs>
+            </div>
           </div>
         </section>
         
