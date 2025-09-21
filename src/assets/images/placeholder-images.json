@@ -4,44 +4,44 @@
     {
       "id": "hero",
       "description": "A vector illustration of a person looking at a path leading to a bright future, symbolizing a new beginning.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/39d375a3-7d31-412e-9d21-4b11bf985472.png",
-      "imageHint": "career journey"
+      "imageUrl": "https://picsum.photos/seed/hero-vector/1200/800",
+      "imageHint": "career journey vector"
     },
     {
       "id": "dashboard-welcome",
       "description": "A well-organized and inspiring workspace.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/75b8e189-98a2-4a37-b430-10a47afe9586.png",
-      "imageHint": "workspace desk"
+      "imageUrl": "https://picsum.photos/seed/workspace-vector/800/400",
+      "imageHint": "workspace desk vector"
     },
     {
       "id": "features",
       "description": "A vector illustration of a person interacting with a futuristic interface to plan their career path.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/a1353e69-111a-471c-99a3-a7566f1317e3.png",
+      "imageUrl": "https://picsum.photos/seed/features-vector/600/600",
       "imageHint": "career planning interface"
     },
     {
       "id": "feature1",
       "description": "A vector illustration of a person looking thoughtful while working on a complex problem, representing the assessment phase.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/a953e5e4-23a4-433d-881a-8227c8fb4049.png",
-      "imageHint": "thoughtful assessment"
+      "imageUrl": "https://picsum.photos/seed/feature1-vector/600/400",
+      "imageHint": "thoughtful assessment vector"
     },
     {
       "id": "feature2",
       "description": "A vector illustration of a futuristic holographic interface displaying charts and data, representing AI recommendations.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/c6395b36-31de-4418-97a2-9133a80258a1.png",
-      "imageHint": "AI interface"
+      "imageUrl": "https://picsum.photos/seed/feature2-vector/600/400",
+      "imageHint": "AI interface vector"
     },
     {
       "id": "feature3",
       "description": "A vector illustration of two characters adjusting a career plan on a large tablet, symbolizing a dynamic roadmap.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/9ab9957c-f236-402a-a92c-63b1e3e7f185.png",
-      "imageHint": "collaborative planning"
+      "imageUrl": "https://picsum.photos/seed/feature3-vector/600/400",
+      "imageHint": "collaborative planning vector"
     },
     {
       "id": "copilot",
       "description": "A vector illustration of a person working on a laptop in a modern, bright environment, representing the career co-pilot feature.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/7b7f14b3-34a4-4dd3-a634-5f11b333796f.png",
-      "imageHint": "woman working laptop"
+      "imageUrl": "https://picsum.photos/seed/copilot-vector/600/600",
+      "imageHint": "woman working vector"
     },
     {
       "id": "testimonial1",
@@ -64,38 +64,38 @@
     {
       "id": "why-ikigai",
       "description": "Four overlapping circles representing the ikigai concept in a clean vector style.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/d9914489-3b3b-4835-9b82-f41857317715.png",
-      "imageHint": "ikigai diagram"
+      "imageUrl": "https://picsum.photos/seed/ikigai-vector/600/600",
+      "imageHint": "ikigai diagram vector"
     },
     {
       "id": "video-thumbnail",
       "description": "A vector graphic thumbnail for a video walkthrough of the app.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/79d1159a-f404-4b5b-8d57-04021245d691.png",
-      "imageHint": "tech background"
+      "imageUrl": "https://picsum.photos/seed/video-thumb-vector/1280/720",
+      "imageHint": "tech background vector"
     },
     {
       "id": "career-preview",
       "description": "A vector illustration of a professional working in their new career as a UI/UX Designer.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/39062a47-1a52-4b25-9a8c-a520696297f7.png",
-      "imageHint": "graphic designer"
+      "imageUrl": "https://picsum.photos/seed/career-preview-vector/600/400",
+      "imageHint": "graphic designer vector"
     },
     {
       "id": "blog1",
       "description": "A vector illustration representing career transition and growth.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/e464c8b6-69e1-4555-a226-1f486d9904da.png",
-      "imageHint": "career path"
+      "imageUrl": "https://picsum.photos/seed/blog1-vector/600/400",
+      "imageHint": "career path vector"
     },
     {
       "id": "blog2",
       "description": "A vector illustration of a person looking content at their work, representing finding purpose.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/52219d3f-5858-4547-8a8b-c689d77f44a8.png",
-      "imageHint": "purposeful work"
+      "imageUrl": "https://picsum.photos/seed/blog2-vector/600/400",
+      "imageHint": "purposeful work vector"
     },
     {
       "id": "blog3",
       "description": "A futuristic vector illustration with circuits and data streams, representing AI tools.",
-      "imageUrl": "https://storage.googleapis.com/project-avastar/d43c8b7b-232a-4643-9828-5e921d7b4260.png",
-      "imageHint": "AI technology"
+      "imageUrl": "https://picsum.photos/seed/blog3-vector/600/400",
+      "imageHint": "AI technology vector"
     }
   ]
 }
