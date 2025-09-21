@@ -1,3 +1,5 @@
+'use client';
+
 import Link from "next/link";
 import Logo from "@/components/logo";
 import { UserNav } from "@/components/user-nav";
@@ -32,7 +34,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
                 <NavigationMenuList>
                     {navItems.map(item => (
                         <NavigationMenuItem key={item.href}>
-                            <Link href={item.href} legacyBehavior passHref>
+                            <Link href={item.href} passHref>
                                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                     {item.name}
                                 </NavigationMenuLink>
