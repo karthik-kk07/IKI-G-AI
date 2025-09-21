@@ -120,7 +120,7 @@ export default function AssessmentPage() {
                 name={currentStepId}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-semibold">{steps[currentstep].label}</FormLabel>
+                    <FormLabel className="font-semibold">{steps[currentStep].label}</FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Be as detailed as you like..."
