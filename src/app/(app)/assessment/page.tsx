@@ -11,7 +11,6 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Textarea } from '@/components/ui/textarea';
 import { Progress } from '@/components/ui/progress';
 import { ArrowLeft, ArrowRight, Sparkles } from 'lucide-react';
-import { generatePersonalizedCareerRecommendations } from '@/ai/flows/generate-personalized-career-recommendations';
 import { useToast } from '@/hooks/use-toast';
 
 const ikigaiSchema = z.object({

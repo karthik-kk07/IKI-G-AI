@@ -63,7 +63,13 @@ const prompt = ai.definePrompt({
   input: {schema: GenerateCareerRecommendationsInputSchema},
   output: {schema: GenerateCareerRecommendationsOutputSchema},
   tools: [formulateUserUniquePath],
-  prompt: `You are a career counselor. Based on the user's skills, preferences, Ikigai components, and unique path, generate personalized career recommendations and explain your reasoning.\n\nSkills: {{{skills}}}\nPreferences: {{{preferences}}}\nIkigai Components: {{{ikigaiComponents}}}\nUser Unique Path: {{userUniquePath}}\n\nCareer Recommendations:`,
+  prompt: `You are a career counselor. Your first step is to call the formulateUserUniquePath tool to understand the user's unique path. Then, based on the user's skills, preferences, Ikigai components, and the formulated unique path, generate personalized career recommendations and explain your reasoning.
+
+Skills: {{{skills}}}
+Preferences: {{{preferences}}}
+Ikigai Components: {{{ikigaiComponents}}}
+
+Career Recommendations:`,
 });
 
 const generateCareerRecommendationsFlow = ai.defineFlow(
@@ -73,7 +79,12 @@ const generateCareerRecommendationsFlow = ai.defineFlow(
     outputSchema: GenerateCareerRecommendationsOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    const userUniquePath = await formulateUserUniquePath(input);
+
+    const {output} = await prompt({
+      ...input,
+      userUniquePath,
+    });
     return output!;
   }
 );
