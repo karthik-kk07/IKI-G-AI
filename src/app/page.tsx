@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote, PlayCircle, Users, BookOpen, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { CheckCircle, Compass, Bot, Network, ArrowRight, ClipboardList, Route, MessageSquare, Quote, PlayCircle, Users, BookOpen, Twitter, Linkedin, Facebook, Plus, Minus } from 'lucide-react';
 import Logo from '@/components/logo';
 import { UserNav } from '@/components/user-nav';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -476,18 +476,21 @@ export default function Home() {
         </section>
 
         <section id="faq" className="py-24 bg-card border-y">
-          <div className="container max-w-3xl mx-auto">
-            <div className="text-center mb-12">
+          <div className="container grid md:grid-cols-2 gap-16 items-start">
+            <div>
               <h2 className="font-headline text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
-              <p className="max-w-xl mx-auto text-muted-foreground mt-4">
-                Have questions? We've got answers. Here are some of the most common things we get asked.
+              <p className="text-muted-foreground mt-4 mb-8">
+                By preemptively addressing common inquiries, FAQs streamline communication channels, empower users with essential knowledge.
               </p>
+              <Button size="lg">Contact Our Team</Button>
             </div>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`}>
-                  <AccordionTrigger className="text-lg font-semibold text-left">{faq.question}</AccordionTrigger>
-                  <AccordionContent className="text-base text-muted-foreground">
+                <AccordionItem key={index} value={`item-${index}`} className="bg-background rounded-lg shadow-sm">
+                  <AccordionTrigger className="px-6 py-4 text-lg font-semibold text-left hover:no-underline">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 pb-4 text-base text-muted-foreground">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
@@ -568,5 +571,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
