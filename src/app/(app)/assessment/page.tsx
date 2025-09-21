@@ -115,7 +115,7 @@ export default function AssessmentPage() {
         </CardHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)}>
-            <CardContent>
+            <CardContent key={currentStepId}>
               <FormField
                 control={form.control}
                 name={currentStepId}
@@ -124,7 +124,6 @@ export default function AssessmentPage() {
                     <FormLabel className="font-semibold">{steps[currentStep].label}</FormLabel>
                     <FormControl>
                       <Textarea
-                        key={currentStepId}
                         placeholder="Be as detailed as you like..."
                         className="min-h-[200px] text-base"
                         {...field}
